@@ -16,5 +16,5 @@ Initial work division suggestion:
 9.	Reverse
 10.	Print all
 -----
-11.	Output to text
-12.	Input from text
+11.	Output to file
+12.	Input from file
