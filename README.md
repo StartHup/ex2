@@ -3,7 +3,7 @@ Boaz approves
 
 Jacob approves
 
-Initial work division suggestion:
+## Initial work division suggestion:
 
 1.	Phone book class
 2.	Frame for UI class (including imports, and making of menu switch case)‎
