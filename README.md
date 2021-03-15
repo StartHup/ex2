@@ -1,5 +1,6 @@
 # ex1
 Boaz approves
+
 Jacob approves
 
 Initial work division suggestion:
