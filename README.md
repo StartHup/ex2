@@ -7,6 +7,8 @@ Chani approves
 
 Zach approves
 
+Shira approves
+
 ## Initial work division suggestion:
 
 1.	Phone book class
