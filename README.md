@@ -1,7 +1,7 @@
 # ex1
 Boaz approves
 
-Jacob approves
+Jacob approved
 
 Chani approves
 
