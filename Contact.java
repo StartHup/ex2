@@ -4,6 +4,8 @@ public class Contact {
     
     public Contact(String name, String phoneNumber){
         this.name = name;
+        
+        //Input validation will happen in main
         this.phoneNumber = phoneNumber;
     }
     
@@ -13,7 +15,7 @@ public class Contact {
         
         Contact temp = (Contact)obj;
         
-        return name.equals(temp.name) && phoneNumber.equals(temp.phoneNumber);
+        return (name.equals(temp.name) && phoneNumber.equals(temp.phoneNumber));
     }
     
     @Override
