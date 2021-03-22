@@ -45,7 +45,7 @@ public class main {
                 break;
                 
                 case "4":
-                    //Print phonebook function here
+                    //Search for contact function here
                     System.out.println("Search for contact.");
                 break;
                 
