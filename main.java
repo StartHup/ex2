@@ -9,7 +9,7 @@ public class main {
         Contact zach = new Contact("Zack", "0524524856");
         
         //Create actual phonebook
-        LinkedList<Contact> phoneBook = new LinkedList<Contact>(); 
+        ArrayList<Contact> phoneBook = new ArrayList<Contact>(); 
         
         phoneBook.add(jacob);
         phoneBook.add(zach);
