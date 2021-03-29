@@ -14,6 +14,7 @@ Shira approves
 1.	Phone book class
 2.	Frame for UI class (including imports, and making of menu switch case)‎
 -----
+**Zach**
 3.	Add contact
 4.	Erase contact
 5.	Remove doubles
