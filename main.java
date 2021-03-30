@@ -41,13 +41,13 @@ public class main {
                 break;
                 
                 case "2":
-                    //Delete contact function here
-                    System.out.println("Delete a contact.");
+                    removeContact(phoneBook);
+                    //System.out.println("Delete a contact.");
                 break;
                 
                 case "3":
-                    //Print phonebook function here
-                    System.out.println("Print phonebook.");
+                    printPhonebook(phoneBook);
+                    //System.out.println("Print phonebook.");
                 break;
                 
                 case "4":
@@ -150,6 +150,54 @@ public class main {
         return;
     }
 
+    public static void removeContact(ArrayList<Contact> phoneBook){
+
+        //Check if phonebook already empty
+        if (isListEmpty(phoneBook)){
+            System.out.println("Phonebook already empty!");
+            return;
+        }
+
+        //Input name to be removed
+        System.out.println("Enter name of contact to be removed (case sensitive): ");
+        String name = s.nextLine();
+
+        //Check if name even possible
+        if (!(isStringProperLength(name, 1, 30))){
+            System.out.println("No such contact!");
+            return;
+        }
+
+        //Iterate through phonebook
+        Iterator<Contact> itr = phoneBook.iterator();
+        while (itr.hasNext()){
+            //Check if next contact matches name
+            if (itr.next().getName().equals(name)){
+                itr.remove();
+                System.out.println("Successfully removed " + name);
+                return;
+            }
+        }
+
+        System.out.println("No such contact!");
+
+    }
+
+    public static void printPhonebook(ArrayList<Contact> phoneBook){
+        //Check if phonebook empty
+        if (isListEmpty(phoneBook)){
+            System.out.println("No contacts in phonebook!");
+            return;
+        }
+
+        System.out.println("Here is your phonebook:");
+
+        for (Contact contact : phoneBook){
+            System.out.println(contact);
+        }
+
+    }
+
     public static boolean isStringProperLength(String name, int min, int max){
         return (name.length() >= min && name.length() <= max); 
     }
@@ -165,6 +213,9 @@ public class main {
         catch (NumberFormatException e){
             return false;
         }
-        
+    }
+
+    public static boolean isListEmpty(ArrayList<Contact> phoneBook){
+        return (phoneBook.size() == 0);
     }
 }
