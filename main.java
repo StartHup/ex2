@@ -146,7 +146,7 @@ public class main {
         Contact contact = new Contact(name, number);
         //Add contact to phonebook
         phoneBook.add(contact);
-        System.out.println("Contact " + name + " with number " + number + " added to phonebook.");
+        System.out.println("Contact " + contact + " added successfully");
         return;
     }
 
@@ -195,7 +195,6 @@ public class main {
         for (Contact contact : phoneBook){
             System.out.println(contact);
         }
-
     }
 
     public static boolean isStringProperLength(String name, int min, int max){
