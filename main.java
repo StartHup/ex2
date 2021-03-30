@@ -2,6 +2,9 @@ import java.util.*;
 
 
 public class main {
+
+    public static Scanner s = new Scanner(System.in);
+
     public static void main(String[] args) {
         //Testing code
         Contact jacob = new Contact("Jacob L", "0507093602");
@@ -16,13 +19,15 @@ public class main {
         
         System.out.println(phoneBook);
         
-        menu();
+        menu(phoneBook);
+
+        
     }
     
     //Switchcase for menu
-    public static void menu(){
+    public static void menu(ArrayList<Contact> phoneBook){
                 
-        Scanner s = new Scanner(System.in);
+        //Scanner s = new Scanner(System.in);
         while (true){
             printMenu();
             
@@ -31,8 +36,8 @@ public class main {
             
             switch (input){
                 case "1":
-                    //Add contact function here
-                    System.out.println("Add a new contact.");
+                    addContact(phoneBook);
+                    //System.out.println("Add a new contact.");
                 break;
                 
                 case "2":
@@ -109,18 +114,17 @@ public class main {
         System.out.println("11 - Exit");
     }
 
-    public static void addContact(){
-        Scanner s = new Scanner(System.in);
+    public static void addContact(ArrayList<Contact> phoneBook){
+        //Scanner s = new Scanner(System.in);
 
         //Input new contact name
-        System.out.println("Enter name of new contact: ");
+        System.out.println("Enter name of new contact (case sensitive): ");
         //Limitations on contact name? Length 30
         String name = s.nextLine();
 
         //Check name validity
         if (!(isStringProperLength(name, 1, 30))){
             System.out.println("Improper name length! Must be between 1 and 30 characters.");
-            s.close();
             return;
         }
         
@@ -131,17 +135,19 @@ public class main {
         //Check number validity
         if (!(isStringDigits(number))){
             System.out.println("Only digits allowed in phone number!");
-            s.close();
             return;
         }
         if (!(isStringProperLength(number, 9, 10))){
             System.out.println("Only 9 or 10 digit numbers allowed!");
-            s.close();
             return;
         }
 
-
-        s.close();
+        //Create contact
+        Contact contact = new Contact(name, number);
+        //Add contact to phonebook
+        phoneBook.add(contact);
+        System.out.println("Contact " + name + " with number " + number + " added to phonebook.");
+        return;
     }
 
     public static boolean isStringProperLength(String name, int min, int max){
@@ -159,5 +165,6 @@ public class main {
         catch (NumberFormatException e){
             return false;
         }
+        
     }
 }
