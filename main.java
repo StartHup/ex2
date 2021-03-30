@@ -46,8 +46,8 @@ public class main {
                 break;
                 
                 case "3":
-                    //Print phonebook function here
-                    System.out.println("Print phonebook.");
+                    printPhonebook(phoneBook);
+                    //System.out.println("Print phonebook.");
                 break;
                 
                 case "4":
@@ -151,6 +151,13 @@ public class main {
     }
 
     public static void removeContact(ArrayList<Contact> phoneBook){
+
+        //Check if phonebook already empty
+        if (isListEmpty(phoneBook)){
+            System.out.println("Phonebook already empty!");
+            return;
+        }
+
         //Input name to be removed
         System.out.println("Enter name of contact to be removed (case sensitive): ");
         String name = s.nextLine();
@@ -176,6 +183,21 @@ public class main {
 
     }
 
+    public static void printPhonebook(ArrayList<Contact> phoneBook){
+        //Check if phonebook empty
+        if (isListEmpty(phoneBook)){
+            System.out.println("No contacts in phonebook!");
+            return;
+        }
+
+        System.out.println("Here is your phonebook:");
+
+        for (Contact contact : phoneBook){
+            System.out.println(contact.getName() + ": " + contact.getNumber());
+        }
+
+    }
+
     public static boolean isStringProperLength(String name, int min, int max){
         return (name.length() >= min && name.length() <= max); 
     }
@@ -191,6 +213,9 @@ public class main {
         catch (NumberFormatException e){
             return false;
         }
-        
+    }
+
+    public static boolean isListEmpty(ArrayList<Contact> phoneBook){
+        return (phoneBook.size() == 0);
     }
 }
