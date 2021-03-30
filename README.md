@@ -16,14 +16,14 @@ Shira approves
 -----
 3.	Add contact
 4.	Erase contact
-5.	Remove doubles
+5.	Print all
 -----
 6.	Sort (lex)
 7.	Sort (numeric)
 -----
 8.	Search and return all
 9.	Reverse
-10.	Print all
+10.	Remove doubles
 -----
 11.	Output to file
 12.	Input from file
