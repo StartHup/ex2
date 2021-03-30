@@ -41,8 +41,8 @@ public class main {
                 break;
                 
                 case "2":
-                    //Delete contact function here
-                    System.out.println("Delete a contact.");
+                    removeContact(phoneBook);
+                    //System.out.println("Delete a contact.");
                 break;
                 
                 case "3":
@@ -148,6 +148,32 @@ public class main {
         phoneBook.add(contact);
         System.out.println("Contact " + name + " with number " + number + " added to phonebook.");
         return;
+    }
+
+    public static void removeContact(ArrayList<Contact> phoneBook){
+        //Input name to be removed
+        System.out.println("Enter name of contact to be removed (case sensitive): ");
+        String name = s.nextLine();
+
+        //Check if name even possible
+        if (!(isStringProperLength(name, 1, 30))){
+            System.out.println("No such contact!");
+            return;
+        }
+
+        //Iterate through phonebook
+        Iterator<Contact> itr = phoneBook.iterator();
+        while (itr.hasNext()){
+            //Check if next contact matches name
+            if (itr.next().getName().equals(name)){
+                itr.remove();
+                System.out.println("Successfully removed " + name);
+                return;
+            }
+        }
+
+        System.out.println("No such contact!");
+
     }
 
     public static boolean isStringProperLength(String name, int min, int max){
