@@ -193,7 +193,7 @@ public class main {
         System.out.println("Here is your phonebook:");
 
         for (Contact contact : phoneBook){
-            System.out.println(contact.getName() + ": " + contact.getNumber());
+            System.out.println(contact);
         }
 
     }
