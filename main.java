@@ -10,13 +10,15 @@ public class Main {
         Contact jacob = new Contact("Jacob L", "0507093602");
         
         Contact zach = new Contact("Zack", "0524524856");
+        Contact bach = new Contact("Zack", "0524524856");
         
         //Create actual phonebook
         ArrayList<Contact> phoneBook = new ArrayList<Contact>(); 
         
         phoneBook.add(jacob);
         phoneBook.add(zach);
-        
+        phoneBook.add(bach);
+
         System.out.println(phoneBook);
         
         menu(phoneBook);
@@ -67,7 +69,7 @@ public class Main {
                                 
                 case "7":
                     //Remove duplicates function here
-                    System.out.println("Remove duplicates.");
+                    phoneBook = removeDuplicates(phoneBook);
                 break;
                 
                 case "8":
@@ -190,6 +192,12 @@ public class Main {
             reversedList.add(0,contact);
         }
         return reversedList;
+    }
+    public static ArrayList<Contact> removeDuplicates(ArrayList<Contact> phoneBook)
+    {
+        Set<Contact> removesDupsSet = new HashSet<Contact>(phoneBook);
+        ArrayList<Contact> removeDups = new ArrayList<Contact>(removesDupsSet);
+        return removeDups;
     }
     public static void printPhonebook(ArrayList<Contact> phoneBook){
         //Check if phonebook empty

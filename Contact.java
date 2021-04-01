@@ -22,7 +22,11 @@ public class Contact {
     public String toString(){
         return name + ": " + phoneNumber;
     }    
-    
+    @Override
+    public int hashCode(){
+        return name.hashCode()*31 + phoneNumber.hashCode();
+    }
+
     public String getName(){
         return this.name;
     }
