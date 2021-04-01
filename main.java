@@ -54,7 +54,7 @@ public class Main {
                 
                 case "4":
                     //Search for contact function here
-                    contactByName(phoneBook);
+                    searchByName(phoneBook);
                 break;
                 
                 case "5":
@@ -197,7 +197,7 @@ public class Main {
         ArrayList<Contact> removeDups = new ArrayList<Contact>(removesDupsSet);
         return removeDups;
     }
-    public static void contactByName(ArrayList<Contact> phoneBook){
+    public static void searchByName(ArrayList<Contact> phoneBook){
         boolean found = false;
         System.out.println("Enter name you are seaching for:");
         String name = s.nextLine();
