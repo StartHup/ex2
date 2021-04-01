@@ -70,11 +70,13 @@ public class Main {
                 case "7":
                     //Remove duplicates function here
                     phoneBook = removeDuplicates(phoneBook);
+                    System.out.println("Duplicates successfully removed");
                 break;
                 
                 case "8":
                     //Reverse order of phonebook function here
                     phoneBook = reversePhoneBook(phoneBook);
+                    System.out.println("Phonebook reversed");
                 break;
                 
                 case "9":
@@ -192,11 +194,13 @@ public class Main {
         }
         return reversedList;
     }
+
     public static ArrayList<Contact> removeDuplicates(ArrayList<Contact> phoneBook){
         Set<Contact> removesDupsSet = new HashSet<Contact>(phoneBook);
         ArrayList<Contact> removeDups = new ArrayList<Contact>(removesDupsSet);
         return removeDups;
     }
+
     public static void searchByName(ArrayList<Contact> phoneBook){
         boolean found = false;
         System.out.println("Enter name you are seaching for:");
@@ -213,6 +217,7 @@ public class Main {
             System.out.println("Coulnd't find " + name);
         }
     }
+
     public static void printPhonebook(ArrayList<Contact> phoneBook){
         //Check if phonebook empty
         if (isListEmpty(phoneBook)){
