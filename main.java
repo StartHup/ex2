@@ -1,7 +1,7 @@
 import java.util.*; 
 
 
-public class main {
+public class Main {
 
     public static Scanner s = new Scanner(System.in);
 
@@ -10,13 +10,15 @@ public class main {
         Contact jacob = new Contact("Jacob L", "0507093602");
         
         Contact zach = new Contact("Zack", "0524524856");
+        Contact bach = new Contact("Zack", "0521524856");
         
         //Create actual phonebook
         ArrayList<Contact> phoneBook = new ArrayList<Contact>(); 
         
         phoneBook.add(jacob);
         phoneBook.add(zach);
-        
+        phoneBook.add(bach);
+
         System.out.println(phoneBook);
         
         menu(phoneBook);
@@ -52,7 +54,7 @@ public class main {
                 
                 case "4":
                     //Search for contact function here
-                    System.out.println("Search for contact.");
+                    searchByName(phoneBook);
                 break;
                 
                 case "5":
@@ -67,12 +69,14 @@ public class main {
                                 
                 case "7":
                     //Remove duplicates function here
-                    System.out.println("Remove duplicates.");
+                    phoneBook = removeDuplicates(phoneBook);
+                    System.out.println("Duplicates successfully removed");
                 break;
                 
                 case "8":
                     //Reverse order of phonebook function here
-                    System.out.println("Reverse order of phonebook.");
+                    phoneBook = reversePhoneBook(phoneBook);
+                    System.out.println("Phonebook reversed");
                 break;
                 
                 case "9":
@@ -181,6 +185,40 @@ public class main {
 
         System.out.println("No such contact!");
 
+    }
+
+    public static ArrayList<Contact> reversePhoneBook(ArrayList<Contact> phoneBook){
+        //new list that we will elements into
+        ArrayList<Contact> reversedList = new ArrayList<Contact>();
+        for (Contact contact : phoneBook){
+            //add next contact at index 0, which will push all other contacts to the right.
+            //After iterating over list the new list will be the original reversed
+            reversedList.add(0,contact);
+        }
+        return reversedList;
+    }
+
+    public static ArrayList<Contact> removeDuplicates(ArrayList<Contact> phoneBook){
+        //move to set to remove duplicates
+        Set<Contact> removesDupsSet = new HashSet<Contact>(phoneBook);
+        //bring back to ArrayList
+        ArrayList<Contact> removeDups = new ArrayList<Contact>(removesDupsSet);
+        return removeDups;
+    }
+
+    public static void searchByName(ArrayList<Contact> phoneBook){
+        boolean nameFound = false;
+        System.out.println("Enter name you are seaching for:");
+        String name = s.nextLine();
+        for (Contact contact : phoneBook){
+            if(contact.getName().equals(name)){
+                System.out.println(contact);
+                nameFound = true;
+            }
+        }
+        if(!nameFound){
+            System.out.println("Coulnd't find " + name);
+        }
     }
 
     public static void printPhonebook(ArrayList<Contact> phoneBook){
