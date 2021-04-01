@@ -188,32 +188,35 @@ public class Main {
     }
 
     public static ArrayList<Contact> reversePhoneBook(ArrayList<Contact> phoneBook){
+        //new list that we will elements into
         ArrayList<Contact> reversedList = new ArrayList<Contact>();
         for (Contact contact : phoneBook){
+            //add next contact at index 0, which will push all other contacts to the right.
+            //After iterating over list the new list will be the original reversed
             reversedList.add(0,contact);
         }
         return reversedList;
     }
 
     public static ArrayList<Contact> removeDuplicates(ArrayList<Contact> phoneBook){
+        //move to set to remove duplicates
         Set<Contact> removesDupsSet = new HashSet<Contact>(phoneBook);
+        //bring back to ArrayList
         ArrayList<Contact> removeDups = new ArrayList<Contact>(removesDupsSet);
         return removeDups;
     }
 
     public static void searchByName(ArrayList<Contact> phoneBook){
-        boolean found = false;
+        boolean nameFound = false;
         System.out.println("Enter name you are seaching for:");
         String name = s.nextLine();
-        ArrayList<Contact> contacts = new ArrayList<Contact>();
         for (Contact contact : phoneBook){
             if(contact.getName().equals(name)){
-                contacts.add(contact);
                 System.out.println(contact);
-                found = true;
+                nameFound = true;
             }
         }
-        if(!found){
+        if(!nameFound){
             System.out.println("Coulnd't find " + name);
         }
     }
