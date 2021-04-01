@@ -1,7 +1,7 @@
 import java.util.*; 
 
 
-public class main {
+public class Main {
 
     public static Scanner s = new Scanner(System.in);
 
@@ -72,7 +72,7 @@ public class main {
                 
                 case "8":
                     //Reverse order of phonebook function here
-                    System.out.println("Reverse order of phonebook.");
+                    phoneBook = reversePhoneBook(phoneBook);
                 break;
                 
                 case "9":
@@ -183,6 +183,14 @@ public class main {
 
     }
 
+    public static ArrayList<Contact> reversePhoneBook(ArrayList<Contact> phoneBook)
+    {
+        ArrayList<Contact> reversedList = new ArrayList<Contact>();
+        for (Contact contact : phoneBook){
+            reversedList.add(0,contact);
+        }
+        return reversedList;
+    }
     public static void printPhonebook(ArrayList<Contact> phoneBook){
         //Check if phonebook empty
         if (isListEmpty(phoneBook)){
