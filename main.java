@@ -10,7 +10,7 @@ public class Main {
         Contact jacob = new Contact("Jacob L", "0507093602");
         
         Contact zach = new Contact("Zack", "0524524856");
-        Contact bach = new Contact("Zack", "0524524856");
+        Contact bach = new Contact("Zack", "0521524856");
         
         //Create actual phonebook
         ArrayList<Contact> phoneBook = new ArrayList<Contact>(); 
@@ -54,7 +54,7 @@ public class Main {
                 
                 case "4":
                     //Search for contact function here
-                    System.out.println("Search for contact.");
+                    contactByName(phoneBook);
                 break;
                 
                 case "5":
@@ -185,19 +185,33 @@ public class Main {
 
     }
 
-    public static ArrayList<Contact> reversePhoneBook(ArrayList<Contact> phoneBook)
-    {
+    public static ArrayList<Contact> reversePhoneBook(ArrayList<Contact> phoneBook){
         ArrayList<Contact> reversedList = new ArrayList<Contact>();
         for (Contact contact : phoneBook){
             reversedList.add(0,contact);
         }
         return reversedList;
     }
-    public static ArrayList<Contact> removeDuplicates(ArrayList<Contact> phoneBook)
-    {
+    public static ArrayList<Contact> removeDuplicates(ArrayList<Contact> phoneBook){
         Set<Contact> removesDupsSet = new HashSet<Contact>(phoneBook);
         ArrayList<Contact> removeDups = new ArrayList<Contact>(removesDupsSet);
         return removeDups;
+    }
+    public static void contactByName(ArrayList<Contact> phoneBook){
+        boolean found = false;
+        System.out.println("Enter name you are seaching for:");
+        String name = s.nextLine();
+        ArrayList<Contact> contacts = new ArrayList<Contact>();
+        for (Contact contact : phoneBook){
+            if(contact.getName().equals(name)){
+                contacts.add(contact);
+                System.out.println(contact);
+                found = true;
+            }
+        }
+        if(!found){
+            System.out.println("Coulnd't find " + name);
+        }
     }
     public static void printPhonebook(ArrayList<Contact> phoneBook){
         //Check if phonebook empty
