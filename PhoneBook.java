@@ -3,9 +3,11 @@ class PhoneBook{
     static Scanner s = new Scanner(System.in);
     ArrayList<Contact> phoneBook;
 
+    //constructor
     public PhoneBook(){
         phoneBook = new ArrayList<Contact>();
     } 
+    //copy constructor
     public PhoneBook(PhoneBook other){
         this.phoneBook = new ArrayList<Contact>(other.phoneBook);
     }
@@ -98,10 +100,11 @@ class PhoneBook{
         Set<Contact> removesDupsSet = new HashSet<Contact>(phoneBook);
         //bring back to ArrayList
         this.phoneBook = new ArrayList<Contact>(removesDupsSet);
+        System.out.println("Duplicates successfully removed.");
     }
 
     public void reversePhoneBook(){
-        //new list that we will elements into
+        //new list that we will insert elements into
         ArrayList<Contact> reversedList = new ArrayList<Contact>();
         for (Contact contact : phoneBook){
             //add next contact at index 0, which will push all other contacts to the right.
@@ -109,7 +112,7 @@ class PhoneBook{
             reversedList.add(0,contact);
         }
         this.phoneBook = reversedList;
-
+        System.out.println("Phonebook reversed.");
     }
 
     public void searchByName(){
@@ -119,10 +122,10 @@ class PhoneBook{
         for (Contact contact : phoneBook){
             if(contact.getName().equals(name)){
                 if(!nameFound){
+                    nameFound = true;
                     System.out.println("Here are the contacts found with the name " +name+":");
                 }
                 System.out.println(contact);
-                nameFound = true;
             }
         }
         if(!nameFound){

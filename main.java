@@ -33,21 +33,17 @@ public class Main {
             switch (input){
                 case "1":
                     phoneBook.addContact();
-                    //System.out.println("Add a new contact.");
                 break;
                 
                 case "2":
                     phoneBook.removeContact();
-                    //System.out.println("Delete a contact.");
                 break;
                 
                 case "3":
                     phoneBook.printPhonebook();
-                    //System.out.println("Print phonebook.");
                 break;
                 
                 case "4":
-                    //Search for contact function here
                     phoneBook.searchByName();
                 break;
                 
@@ -64,13 +60,11 @@ public class Main {
                 case "7":
                     //Remove duplicates function here
                     phoneBook.removeDuplicates();
-                    System.out.println("Duplicates successfully removed.");
                 break;
                 
                 case "8":
                     //Reverse order of phonebook function here
                     phoneBook.reversePhoneBook();
-                    System.out.println("Phonebook reversed.");
                 break;
                 
                 case "9":
@@ -94,6 +88,7 @@ public class Main {
             System.out.println("");
             
         }
+        s.close();
     }
     
     public static void printMenu(){
