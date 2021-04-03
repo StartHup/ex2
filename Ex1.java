@@ -1,5 +1,5 @@
 import java.util.*; 
-public class Main {
+public class Ex1 {
     public static Scanner s = new Scanner(System.in);
     public static void main(String[] args) {
         //Testing code
@@ -17,7 +17,7 @@ public class Main {
 
         
         menu(phoneBook);
-
+        s.close();
         
     }
     
@@ -88,7 +88,7 @@ public class Main {
             System.out.println("");
             
         }
-        s.close();
+        
     }
     
     public static void printMenu(){
