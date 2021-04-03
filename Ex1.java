@@ -1,6 +1,5 @@
 import java.util.*; 
 public class Ex1 {
-    public static Scanner s = new Scanner(System.in);
     public static void main(String[] args) {
         //Testing code
         Contact jacob = new Contact("Jacob L", "0507093602");
@@ -17,13 +16,13 @@ public class Ex1 {
 
         
         menu(phoneBook);
-        s.close();
+        
         
     }
     
     //Switchcase for menu
     public static void menu(PhoneBook phoneBook){
-                
+        Scanner s = new Scanner(System.in);
         while (true){
             printMenu();
             
@@ -88,7 +87,7 @@ public class Ex1 {
             System.out.println("");
             
         }
-        
+        s.close();
     }
     
     public static void printMenu(){
