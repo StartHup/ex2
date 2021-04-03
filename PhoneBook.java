@@ -13,7 +13,9 @@ class PhoneBook{
     }
 
     public void addContact(Contact contact){
-        phoneBook.add(contact);
+        if(contact != null){
+            phoneBook.add(contact);
+        }
     }
 
     public void addContact(){
