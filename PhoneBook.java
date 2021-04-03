@@ -123,9 +123,11 @@ class PhoneBook{
         String name = s.nextLine();
         for (Contact contact : phoneBook){
             if(contact.getName().equals(name)){
+                //if this is our first contact found with this name
                 if(!nameFound){
-                    nameFound = true;
-                    System.out.println("Here are the contacts found with the name " +name+":");
+                    nameFound = true; 
+                    //print this message only first time we are printing to screen
+                    System.out.println("Here are the contacts found with the name " + name + ":");
                 }
                 System.out.println(contact);
             }
