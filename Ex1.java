@@ -23,11 +23,12 @@ public class Ex1 {
     //Switchcase for menu
     public static void menu(PhoneBook phoneBook){
         Scanner s = new Scanner(System.in);
-        while (true){
+        String input = "";
+        while (!input.equals("11")){
             printMenu();
             
             System.out.println("Enter a number to make a selection: ");
-            String input = s.nextLine();
+            input = s.nextLine();
             
             switch (input){
                 case "1":
