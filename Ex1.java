@@ -70,12 +70,12 @@ public class Ex1 {
                 
                 case "9":
                     //Export contacts to txt file function here
-                    System.out.println("Export contacts to txt file.");
+                    phoneBook.exportToFile();
                 break;
                 
                 case "10":
                     //Import contacts from txt file function here
-                    System.out.println("Import contacts from txt file.");
+                    phoneBook.importToFile();
                 break;
                 
                 case "11":
