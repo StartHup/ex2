@@ -49,12 +49,12 @@ public class Ex1 {
                 break;
                 
                 case "5":
-                    //Sort phonebook by name function here
+                    phoneBook.sortByName();
                     System.out.println("Sort phonebook by name.");
                 break;
                 
                 case "6":
-                    //Sort phonebook by phone number function here
+                    phoneBook.sortByNumber();
                     System.out.println("Sort phonebook by phone number.");
                 break;
                                 

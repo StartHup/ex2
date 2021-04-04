@@ -136,7 +136,21 @@ class PhoneBook{
             System.out.println("Coulnd't find " + name);
         }
     }
-    
+  
+    public void sortByName(){
+        if (isListEmpty()){
+            System.out.println("Phonebook empty!");
+            return;
+        }
+        ArrayList<Contact> sortedList = new ArrayList<Contact>();
+        quickSort(this.phoneBook);
+        this.phoneBook = sortedList;
+    }
+
+    public void sortByNumber(){
+
+    }
+
     public boolean isStringProperLength(String name, int min, int max){
         return name.length() >= min && name.length() <= max; 
     }
@@ -156,4 +170,35 @@ class PhoneBook{
     public boolean isListEmpty(){
         return phoneBook.size() == 0;
     }
+
+    public ArrayList<Contact> quickSort(ArrayList<Contact> list){
+        if (isListEmpty())
+            return list;
+        ArrayList<Contact> sorted;
+        ArrayList<Contact> smaller = new ArrayList<Contact>(); 
+        ArrayList<Contact> greater = new ArrayList<Contact>(); 
+        //list.add(null);
+        Contact pivot = list.get(0);
+        int i;
+        Contact j;  
+        for (i=1;i<list.size();i++)
+        {
+            j=list.get(i);
+            if (j.getName().charAt(0)<pivot.getName().charAt(0))   
+                smaller.add(j);
+            else
+                greater.add(j);
+        }
+        smaller = quickSort(smaller);  // capitalise 's'
+        greater = quickSort(greater);  // sort both halfs recursively
+        smaller.add(pivot);          // add initial pivot to the end of the (now sorted) smaller Vehicles
+        smaller.addAll(greater);     // add the (now sorted) greater Vehicles to the smaller ones (now smaller is essentially your sorted list)
+        sorted = smaller;            // assign it to sorted; one could just as well do: return smaller
+    
+        return sorted;
+
+
+    }
+
+
 }
