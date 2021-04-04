@@ -136,6 +136,7 @@ class PhoneBook{
             System.out.println("Coulnd't find " + name);
         }
     }
+    
     public boolean isStringProperLength(String name, int min, int max){
         return name.length() >= min && name.length() <= max; 
     }

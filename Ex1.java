@@ -24,6 +24,7 @@ public class Ex1 {
     public static void menu(PhoneBook phoneBook){
         Scanner s = new Scanner(System.in);
         String input = "";
+        
         while (!input.equals("11")){
             printMenu();
             
