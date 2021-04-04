@@ -75,7 +75,11 @@ public class Ex1 {
                 
                 case "10":
                     //Import contacts from txt file function here
+<<<<<<< HEAD
                     phoneBook.importFromFile();
+=======
+                    phoneBook.importToFile();
+>>>>>>> 418a14c8ac602400903a9f8bf88fa19fb4c73002
                 break;
                 
                 case "11":

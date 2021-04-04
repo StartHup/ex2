@@ -157,7 +157,11 @@ class PhoneBook{
         }
     }
         
+<<<<<<< HEAD
     public void importFromFile(){
+=======
+    public void importToFile(){
+>>>>>>> 418a14c8ac602400903a9f8bf88fa19fb4c73002
         System.out.println("Please enter the file name");
         String name = s.nextLine();
         String line;
