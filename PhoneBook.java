@@ -1,4 +1,6 @@
 import java.util.*; 
+import java.io.*;  // Import the File class
+import java.net.SocketPermission;
 class PhoneBook{
     static Scanner s = new Scanner(System.in);
     ArrayList<Contact> phoneBook;
@@ -136,7 +138,48 @@ class PhoneBook{
             System.out.println("Coulnd't find " + name);
         }
     }
+
+
+    public void exportToFile(){
+        System.out.println("Please enter the file name");
+        String name = s.nextLine();
+        String fileContent = "";
+        for (Contact contact : phoneBook){
+            fileContent = fileContent.concat(contact + "\n");
+        }
+        try{
+            FileWriter writer = new FileWriter(name);
+            writer.write(fileContent);
+            writer.close();
+        }
+        catch(IOException ioexc){
+            System.out.println(ioexc);
+        }
+    }
+        
+    public void importFromFile(){
+        System.out.println("Please enter the file name");
+        String name = s.nextLine();
+        String line;
+        String[] splitLine;
+        File file = new File(name);
+        try{
+            Scanner scan = new Scanner(file);
+            while (scan.hasNextLine())
+            {
+                //read next line from file
+                line = scan.nextLine();
+                //split it to name and number
+                splitLine = line.split(": ");
+                Contact newContact = new Contact(splitLine[0], splitLine[1]);
+                phoneBook.add(newContact);
+            }
     
+        }
+        catch(FileNotFoundException fnfe){
+            System.out.println(fnfe);
+        }
+    }
     public boolean isStringProperLength(String name, int min, int max){
         return name.length() >= min && name.length() <= max; 
     }
