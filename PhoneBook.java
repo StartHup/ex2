@@ -1,6 +1,6 @@
 import java.util.*; 
 import java.io.*;  // Import the File class
-import java.net.SocketPermission;
+
 class PhoneBook{
     static Scanner s = new Scanner(System.in);
     ArrayList<Contact> phoneBook;
@@ -192,7 +192,7 @@ class PhoneBook{
                 Contact newContact = new Contact(splitLine[0], splitLine[1]);
                 phoneBook.add(newContact);
             }
-    
+            scan.close();
         }
         catch(FileNotFoundException fnfe){
             System.out.println(fnfe);
@@ -222,12 +222,14 @@ class PhoneBook{
     public ArrayList<Contact> quickSortName(){
         if (isListEmpty()) //base case
             return phoneBook;
+            
         ArrayList<Contact> sorted;
         ArrayList<Contact> smaller = new ArrayList<Contact>(); 
         ArrayList<Contact> greater = new ArrayList<Contact>(); 
         Contact pivot = phoneBook.get(0); // pivot is the first element
         int i,k = 0,c;
         Contact j;  
+        
         for (i=1;i<phoneBook.size();i++) //loop the phoneBook
         {
             k = 0;
@@ -241,6 +243,7 @@ class PhoneBook{
                 greater.add(j);
             
         }
+        
         this.phoneBook = smaller;
         smaller = quickSortName();
         this.phoneBook = greater;  
@@ -255,12 +258,14 @@ class PhoneBook{
     public ArrayList<Contact> quickSortNumber(){
         if (isListEmpty()) //base case
             return phoneBook;
+            
         ArrayList<Contact> sorted;
         ArrayList<Contact> smaller = new ArrayList<Contact>(); 
         ArrayList<Contact> greater = new ArrayList<Contact>(); 
         Contact pivot = phoneBook.get(0); // pivot is the first element
         int i,k = 0,c;
         Contact j;  
+        
         for (i=1;i<phoneBook.size();i++) //loop the phoneBook
         {
             k = 0;
@@ -274,6 +279,7 @@ class PhoneBook{
                 greater.add(j);
             
         }
+        
         this.phoneBook = smaller;
         smaller = quickSortNumber();
         this.phoneBook = greater;  
