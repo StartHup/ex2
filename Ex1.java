@@ -5,15 +5,21 @@ public class Ex1 {
         Contact jacob = new Contact("Jacob L", "0507093602");
         
         Contact zach = new Contact("Zack", "0524524856");
-        Contact bach = new Contact("Zack", "0521524856");
+        Contact bach = new Contact("Zadk", "0521524856");
         
+        Contact cach = new Contact("Cack", "0000000000");
+        Contact aach = new Contact("Aack", "1111111111");
+        Contact bbach = new Contact("Back", "2222222222");
+
         //Create actual phonebook
         PhoneBook phoneBook = new PhoneBook(); 
         
         phoneBook.addContact(jacob);
         phoneBook.addContact(zach);
         phoneBook.addContact(bach);
-
+        phoneBook.addContact(cach);
+        phoneBook.addContact(aach);
+        phoneBook.addContact(bbach);
         
         menu(phoneBook);
         
@@ -50,12 +56,10 @@ public class Ex1 {
                 
                 case "5":
                     phoneBook.sortByName();
-                    System.out.println("Sort phonebook by name.");
                 break;
                 
                 case "6":
                     phoneBook.sortByNumber();
-                    System.out.println("Sort phonebook by phone number.");
                 break;
                                 
                 case "7":

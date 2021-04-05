@@ -142,13 +142,17 @@ class PhoneBook{
             System.out.println("Phonebook empty!");
             return;
         }
-        ArrayList<Contact> sortedList = new ArrayList<Contact>();
-        quickSort(this.phoneBook);
-        this.phoneBook = sortedList;
+
+        this.phoneBook = quickSortName();
     }
 
     public void sortByNumber(){
+        if (isListEmpty()){
+            System.out.println("Phonebook empty!");
+            return;
+        }
 
+        this.phoneBook = quickSortNumber();
     }
 
     public boolean isStringProperLength(String name, int min, int max){
@@ -171,34 +175,64 @@ class PhoneBook{
         return phoneBook.size() == 0;
     }
 
-    public ArrayList<Contact> quickSort(ArrayList<Contact> list){
-        if (isListEmpty())
-            return list;
+    public ArrayList<Contact> quickSortName(){
+        if (isListEmpty()) //base case
+            return phoneBook;
         ArrayList<Contact> sorted;
         ArrayList<Contact> smaller = new ArrayList<Contact>(); 
         ArrayList<Contact> greater = new ArrayList<Contact>(); 
-        //list.add(null);
-        Contact pivot = list.get(0);
-        int i;
+        Contact pivot = phoneBook.get(0); // pivot is the first element
+        int i,k = 0;
         Contact j;  
-        for (i=1;i<list.size();i++)
+        for (i=1;i<phoneBook.size();i++) //loop the phoneBook
         {
-            j=list.get(i);
-            if (j.getName().charAt(0)<pivot.getName().charAt(0))   
+            j=phoneBook.get(i);
+            while(j.getName().charAt(k)==pivot.getName().charAt(k)) //dealing with names begin identicaly 
+                k++;
+            if (j.getName().charAt(k)<pivot.getName().charAt(k)) // compare each contact to pivot 
                 smaller.add(j);
             else
                 greater.add(j);
         }
-        smaller = quickSort(smaller);  // capitalise 's'
-        greater = quickSort(greater);  // sort both halfs recursively
-        smaller.add(pivot);          // add initial pivot to the end of the (now sorted) smaller Vehicles
-        smaller.addAll(greater);     // add the (now sorted) greater Vehicles to the smaller ones (now smaller is essentially your sorted list)
-        sorted = smaller;            // assign it to sorted; one could just as well do: return smaller
+        this.phoneBook = smaller;
+        smaller = quickSortName();
+        this.phoneBook = greater;  
+        greater = quickSortName();  // sort both halfs recursively
+        smaller.add(pivot);          // add initial pivot to the end of the smaller 
+        smaller.addAll(greater);     // add the  greater  to the smaller ones 
+        sorted = smaller;            // assign it to sorted
     
         return sorted;
-
-
     }
 
+    public ArrayList<Contact> quickSortNumber(){
+        if (isListEmpty()) //base case
+        return phoneBook;
+    ArrayList<Contact> sorted;
+    ArrayList<Contact> smaller = new ArrayList<Contact>(); 
+    ArrayList<Contact> greater = new ArrayList<Contact>(); 
+    Contact pivot = phoneBook.get(0); // pivot is the first element
+    int i, k = 0;
+    Contact j;  
+    for (i=1;i<phoneBook.size();i++) //loop the phoneBook
+    {
+        j=phoneBook.get(i);
+        while(j.getNumber().charAt(k)==pivot.getNumber().charAt(k))  //dealing with names begin identicaly 
+            k++;
+        if (j.getNumber().charAt(k)<pivot.getNumber().charAt(k)) // compare each contact to pivot  
+            smaller.add(j);
+        else
+            greater.add(j);
+    }
+    this.phoneBook = smaller;
+    smaller = quickSortNumber();
+    this.phoneBook = greater;  
+    greater = quickSortNumber();  // sort both halfs recursively
+    smaller.add(pivot);          // add initial pivot to the end of the smaller 
+    smaller.addAll(greater);     // add the  greater  to the smaller ones
+    sorted = smaller;            // assign it to sorted
+
+    return sorted;
+    }
 
 }
