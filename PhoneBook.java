@@ -1,6 +1,6 @@
 import java.util.*; 
 import java.io.*;  // Import the File class
-import java.net.SocketPermission;
+
 class PhoneBook{
     static Scanner s = new Scanner(System.in);
     ArrayList<Contact> phoneBook;
@@ -192,11 +192,12 @@ class PhoneBook{
                 Contact newContact = new Contact(splitLine[0], splitLine[1]);
                 phoneBook.add(newContact);
             }
-    
+            scan.close();
         }
         catch(FileNotFoundException fnfe){
             System.out.println(fnfe);
         }
+        
     }
 
     public boolean isStringProperLength(String name, int min, int max){
