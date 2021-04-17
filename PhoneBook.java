@@ -9,6 +9,7 @@ class PhoneBook{
     public PhoneBook(){
         phoneBook = new ArrayList<Contact>();
     } 
+    
     //copy constructor
     public PhoneBook(PhoneBook other){
         this.phoneBook = new ArrayList<Contact>(other.phoneBook);
@@ -24,6 +25,7 @@ class PhoneBook{
         //Input new contact name
         System.out.println("Enter name of new contact (case sensitive): ");
         String name = s.nextLine();
+        
         //Check name validity
         if (!(isStringProperLength(name, 1, 30))){
             System.out.println("Improper name length! Must be between 1 and 30 characters.");
@@ -46,6 +48,7 @@ class PhoneBook{
 
         //Create contact
         Contact contact = new Contact(name, number);
+        
         //Add contact to phonebook
         phoneBook.add(contact);
         System.out.println("Contact " + contact + " added successfully");
@@ -82,7 +85,6 @@ class PhoneBook{
         }
 
         System.out.println("No such contact!");
-
     }
 
     public void printPhonebook(){
@@ -102,20 +104,25 @@ class PhoneBook{
     public void removeDuplicates(){
         //move to set to remove duplicates
         Set<Contact> removesDupsSet = new HashSet<Contact>(phoneBook);
+        
         //bring back to ArrayList
         this.phoneBook = new ArrayList<Contact>(removesDupsSet);
+        
         System.out.println("Duplicates successfully removed.");
     }
 
     public void reversePhoneBook(){
         //new list that we will insert elements into
         ArrayList<Contact> reversedList = new ArrayList<Contact>();
+        
         for (Contact contact : phoneBook){
             //add next contact at index 0, which will push all other contacts to the right.
             //After iterating over list the new list will be the original reversed
             reversedList.add(0,contact);
         }
+        
         this.phoneBook = reversedList;
+        
         System.out.println("Phonebook reversed.");
     }
 
@@ -123,6 +130,7 @@ class PhoneBook{
         boolean nameFound = false;
         System.out.println("Enter name you are seaching for:");
         String name = s.nextLine();
+        
         for (Contact contact : phoneBook){
             if(contact.getName().equals(name)){
                 //if this is our first contact found with this name
@@ -134,6 +142,7 @@ class PhoneBook{
                 System.out.println(contact);
             }
         }
+        
         if(!nameFound){
             System.out.println("Coulnd't find " + name);
         }
@@ -181,6 +190,7 @@ class PhoneBook{
         String line;
         String[] splitLine;
         File file = new File(name);
+        
         try{
             Scanner scan = new Scanner(file);
             while (scan.hasNextLine())
@@ -194,9 +204,11 @@ class PhoneBook{
             }
             scan.close();
         }
+        
         catch(FileNotFoundException fnfe){
             System.out.println(fnfe);
         }
+        
     }
     
     public boolean isStringProperLength(String name, int min, int max){
@@ -209,6 +221,7 @@ class PhoneBook{
             Integer.parseInt(string);
             return true;
         }
+      
         //If NumberFormatException caught => there is a nondigit somewhere
         catch (NumberFormatException e){
             return false;
@@ -222,7 +235,7 @@ class PhoneBook{
     public ArrayList<Contact> quickSortName(){
         if (isListEmpty()) //base case
             return phoneBook;
-            
+
         ArrayList<Contact> sorted;
         ArrayList<Contact> smaller = new ArrayList<Contact>(); 
         ArrayList<Contact> greater = new ArrayList<Contact>(); 
@@ -241,7 +254,6 @@ class PhoneBook{
                 smaller.add(j);
             else
                 greater.add(j);
-            
         }
         
         this.phoneBook = smaller;
@@ -258,12 +270,14 @@ class PhoneBook{
     public ArrayList<Contact> quickSortNumber(){
         if (isListEmpty()) //base case
             return phoneBook;
-            
+
         ArrayList<Contact> sorted;
         ArrayList<Contact> smaller = new ArrayList<Contact>(); 
         ArrayList<Contact> greater = new ArrayList<Contact>(); 
         Contact pivot = phoneBook.get(0); // pivot is the first element
+
         int i,k = 0,c;
+
         Contact j;  
         
         for (i=1;i<phoneBook.size();i++) //loop the phoneBook
@@ -277,7 +291,6 @@ class PhoneBook{
                 smaller.add(j);
             else
                 greater.add(j);
-            
         }
         
         this.phoneBook = smaller;
@@ -287,7 +300,7 @@ class PhoneBook{
         smaller.add(pivot);          // add initial pivot to the end of the smaller 
         smaller.addAll(greater);     // add the  greater  to the smaller ones 
         sorted = smaller;            // assign it to sorted
-    
+
         return sorted;
     }
 }
