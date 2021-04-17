@@ -5,11 +5,11 @@ public class Ex1 {
         Contact jacob = new Contact("Jacob L", "0507093602");
         
         Contact zach = new Contact("Zack", "0524524856");
-        Contact bach = new Contact("Zadk", "0521524856");
+        Contact bach = new Contact("Zack", "0521524856");
         
-        Contact cach = new Contact("Cack", "0000000000");
-        Contact aach = new Contact("Aack", "1111111111");
-        Contact bbach = new Contact("Back", "2222222222");
+        Contact cach = new Contact("Cack", "000000000");
+        Contact aach = new Contact("Aack", "1584159639");
+        Contact bbach = new Contact("Back", "2584159639");
 
         //Create actual phonebook
         PhoneBook phoneBook = new PhoneBook(); 

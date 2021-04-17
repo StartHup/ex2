@@ -148,7 +148,6 @@ class PhoneBook{
         }
     }
 
-  
     public void sortByName(){
         if (isListEmpty()){
             System.out.println("Phonebook empty!");
@@ -165,8 +164,9 @@ class PhoneBook{
         }
 
         this.phoneBook = quickSortNumber();
+        
     }
-
+    
     public void exportToFile(){
         System.out.println("Please enter the file name");
         String name = s.nextLine();
@@ -183,7 +183,7 @@ class PhoneBook{
             System.out.println(ioexc);
         }
     }
-  
+    
     public void importFromFile(){
         System.out.println("Please enter the file name");
         String name = s.nextLine();
@@ -210,7 +210,7 @@ class PhoneBook{
         }
         
     }
-
+    
     public boolean isStringProperLength(String name, int min, int max){
         return name.length() >= min && name.length() <= max; 
     }
@@ -221,6 +221,7 @@ class PhoneBook{
             Integer.parseInt(string);
             return true;
         }
+      
         //If NumberFormatException caught => there is a nondigit somewhere
         catch (NumberFormatException e){
             return false;
@@ -234,18 +235,20 @@ class PhoneBook{
     public ArrayList<Contact> quickSortName(){
         if (isListEmpty()) //base case
             return phoneBook;
-        
+
         ArrayList<Contact> sorted;
         ArrayList<Contact> smaller = new ArrayList<Contact>(); 
         ArrayList<Contact> greater = new ArrayList<Contact>(); 
         Contact pivot = phoneBook.get(0); // pivot is the first element
-        int i,k = 0;
+        int i,k = 0,c;
         Contact j;  
         
         for (i=1;i<phoneBook.size();i++) //loop the phoneBook
         {
+            k = 0;
             j=phoneBook.get(i);
-            while(j.getName().charAt(k)==pivot.getName().charAt(k)) //dealing with names begin identicaly 
+            c = j.getName().length();
+            while(j.getName().charAt(k)==pivot.getName().charAt(k) && k<c-1)//dealing with names begin identicaly 
                 k++;
             if (j.getName().charAt(k)<pivot.getName().charAt(k)) // compare each contact to pivot 
                 smaller.add(j);
@@ -267,20 +270,24 @@ class PhoneBook{
     public ArrayList<Contact> quickSortNumber(){
         if (isListEmpty()) //base case
             return phoneBook;
-        
+
         ArrayList<Contact> sorted;
         ArrayList<Contact> smaller = new ArrayList<Contact>(); 
         ArrayList<Contact> greater = new ArrayList<Contact>(); 
         Contact pivot = phoneBook.get(0); // pivot is the first element
-        int i, k = 0;
+
+        int i,k = 0,c;
+
         Contact j;  
         
         for (i=1;i<phoneBook.size();i++) //loop the phoneBook
         {
+            k = 0;
             j=phoneBook.get(i);
-            while(j.getNumber().charAt(k)==pivot.getNumber().charAt(k))  //dealing with names begin identicaly 
+            c = j.getNumber().length();
+            while(j.getNumber().charAt(k)==pivot.getNumber().charAt(k) && k<c-1)//dealing with Numbers begin identicaly 
                 k++;
-            if (j.getNumber().charAt(k)<pivot.getNumber().charAt(k)) // compare each contact to pivot  
+            if (j.getNumber().charAt(k)<pivot.getNumber().charAt(k)) // compare each contact to pivot 
                 smaller.add(j);
             else
                 greater.add(j);
@@ -291,7 +298,7 @@ class PhoneBook{
         this.phoneBook = greater;  
         greater = quickSortNumber();  // sort both halfs recursively
         smaller.add(pivot);          // add initial pivot to the end of the smaller 
-        smaller.addAll(greater);     // add the  greater  to the smaller ones
+        smaller.addAll(greater);     // add the  greater  to the smaller ones 
         sorted = smaller;            // assign it to sorted
 
         return sorted;
