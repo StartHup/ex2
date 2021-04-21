@@ -1,5 +1,5 @@
 public interface App {
-    public void print();
+    public void printMenu();
     public void exitApp();
 
 }
