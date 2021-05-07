@@ -1,5 +1,5 @@
 public abstract class Event {
-    int length;
+    int length; //length is in minutes
     public Event(){}
 
     
