@@ -1,7 +1,7 @@
-public class Diary implements App {
-    BusyDate[] calander;
-    public Diary(){
-        calander = new BusyDate[30];
+public class Planner implements App {
+    BusyDate[] calender;
+    public Planner(){
+        calender = new BusyDate[30];
     }
     @Override
     public void print() {
