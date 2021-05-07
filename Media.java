@@ -1,6 +1,6 @@
 public abstract class Media{
-    String name;
-    int lenght;
+    String file_name;
+    int length;
     //C'tor
 
 }
