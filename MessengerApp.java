@@ -3,7 +3,7 @@ public class MessengerApp implements App{
     //Needs much more planning
 
     @Override
-    public void printMenu() {
+    public void runApp() {
         // TODO Auto-generated method stub
 
     }

@@ -8,7 +8,7 @@ public class CalendarApp implements App {
     }
   
     @Override
-    public void printMenu() {
+    public void runApp() {
         // TODO Auto-generated method stub
 
     }

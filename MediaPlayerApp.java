@@ -1,7 +1,7 @@
 public class MediaPlayerApp implements App{
 
     @Override
-    public void printMenu() {
+    public void runApp() {
         // TODO Auto-generated method stub
 
     }
