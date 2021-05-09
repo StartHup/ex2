@@ -11,7 +11,7 @@ class PhoneBookApp {
     } 
     
     //copy constructor
-    public PhoneBookApp(PhoneBook other) {
+    public PhoneBookApp(PhoneBookApp other) {
         this.phoneBook = new ArrayList<Contact>(other.phoneBook);
     }
 
