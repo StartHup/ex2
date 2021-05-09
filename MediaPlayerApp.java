@@ -1,4 +1,4 @@
-public class MediaPlayer implements App{
+public class MediaPlayerApp implements App{
 
     @Override
     public void printMenu() {
