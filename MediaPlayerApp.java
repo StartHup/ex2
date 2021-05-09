@@ -50,6 +50,7 @@ public class MediaPlayerApp implements App{
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                     System.out.println("Add new file.");
                     //mediaPlayer.addNewFile();
                 break;
@@ -68,13 +69,19 @@ public class MediaPlayerApp implements App{
 =======
 >>>>>>> 09ad8b5 (Create Media Player App menus)
                     mediaPlayer.addNewFile();
+=======
+                    System.out.println("Add new file.");
+                    //mediaPlayer.addNewFile();
+>>>>>>> 0cb772e (Test Media App menu)
                 break;
                 
                 case "2":
-                    mediaPlayer.playMediaFile();
+                System.out.println("Play file");
+                    //mediaPlayer.playMediaFile();
                 break;
                 
                 case "3":
+<<<<<<< HEAD
                     mediaPlayer.playAllFilesByType();
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -83,11 +90,16 @@ public class MediaPlayerApp implements App{
 >>>>>>> e0e2a9e (Create Media Player App menus)
 =======
 >>>>>>> 09ad8b5 (Create Media Player App menus)
+=======
+                    System.out.println("playAllFilesByType");
+                    //mediaPlayer.playAllFilesByType();
+>>>>>>> 0cb772e (Test Media App menu)
                 break;
                 
                 case "4":
                     //Exit gracefully
                     System.out.println("Exiting Media Player App...");
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -101,10 +113,14 @@ public class MediaPlayerApp implements App{
 =======
                     mediaPlayer.exitApp();
 >>>>>>> 09ad8b5 (Create Media Player App menus)
+=======
+                    //mediaPlayer.exitApp();
+>>>>>>> 0cb772e (Test Media App menu)
                 break;
                 
                 default:
                 System.out.println("Invalid input. Please try again.\n");
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -124,6 +140,12 @@ public class MediaPlayerApp implements App{
             } 
         }
 >>>>>>> 09ad8b5 (Create Media Player App menus)
+=======
+            }
+            System.out.println("");
+        }
+        s.close();
+>>>>>>> 0cb772e (Test Media App menu)
     }
     
     
