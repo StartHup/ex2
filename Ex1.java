@@ -4,7 +4,7 @@ public class Ex1 {
         //Testing code        
         MediaPlayerApp mediaPlayer = new MediaPlayerApp();
         
-        mediaPlayer.menu(mediaPlayer);
+        mediaPlayer.runApp();
         
     }
     
