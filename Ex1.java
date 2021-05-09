@@ -1,33 +1,14 @@
 import java.util.*; 
 public class Ex1 {
     public static void main(String[] args) {
-        //Testing code
-        Contact jacob = new Contact("Jacob L", "0507093602");
-        
-        Contact zach = new Contact("Zack", "0524524856");
-        Contact bach = new Contact("Zack", "0521524856");
-        
-        Contact cach = new Contact("Cack", "000000000");
-        Contact aach = new Contact("Aack", "1584159639");
-        Contact bbach = new Contact("Back", "2584159639");
-
-        //Create actual phonebook
-        PhoneBook phoneBook = new PhoneBook(); 
-        
-        phoneBook.addContact(jacob);
-        phoneBook.addContact(zach);
-        phoneBook.addContact(bach);
-        phoneBook.addContact(cach);
-        phoneBook.addContact(aach);
-        phoneBook.addContact(bbach);
-        
-        menu(phoneBook);
+        //Testing code        
+        MediaPlayerApp mediaPlayer = new MediaPlayerApp();
         
         
     }
     
     //Switchcase for menu
-    public static void menu(PhoneBook phoneBook){
+    /*public static void menu(PhoneBook phoneBook){
         Scanner s = new Scanner(System.in);
         String input = "";
         
@@ -109,6 +90,6 @@ public class Ex1 {
         System.out.println(" 9 - Export contacts to txt file.");
         System.out.println("10 - Import contacts from txt file.");
         System.out.println("11 - Exit");
-    }
+    }*/
 
 }
