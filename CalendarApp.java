@@ -3,7 +3,7 @@ public class CalendarApp implements App {
     //List of days with events/meetings
     BusyDate[] calander;
     
-    public Calendar(){
+    public CalendarApp(){
         calander = new BusyDate[30];
     }
   
