@@ -29,27 +29,32 @@ public class MediaPlayerApp implements App{
             
             switch (input){
                 case "1":
-                    mediaPlayer.addNewFile();
+                    System.out.println("Add new file.");
+                    //mediaPlayer.addNewFile();
                 break;
                 
                 case "2":
-                    mediaPlayer.playMediaFile();
+                System.out.println("Play file");
+                    //mediaPlayer.playMediaFile();
                 break;
                 
                 case "3":
-                    mediaPlayer.playAllFilesByType();
+                    System.out.println("playAllFilesByType");
+                    //mediaPlayer.playAllFilesByType();
                 break;
                 
                 case "4":
                     //Exit gracefully
                     System.out.println("Exiting Media Player App...");
-                    mediaPlayer.exitApp();
+                    //mediaPlayer.exitApp();
                 break;
                 
                 default:
                 System.out.println("Invalid input. Please try again.\n");
-            } 
+            }
+            System.out.println("");
         }
+        s.close();
     }
     
     
