@@ -2,21 +2,12 @@ import java.util.*;
 public class MediaPlayerApp implements App{
 
     @Override
-    public void printMenu() {
-        System.out.println("What would you like to do?");
-        System.out.println(" 1 - Add a new media file.");
-        System.out.println(" 2 - Play a media file (by name).");
-        System.out.println(" 3 - Play all media files by type (audio or video).");
-        System.out.println(" 4 - Exit Media Player App.");
-        
-    }
-    
-    public static void menu(MediaPlayerApp mediaPlayer){
+    public void runApp(){
         Scanner s = new Scanner(System.in);
         String input = "";
         
         while (!input.equals("4")){
-            mediaPlayer.printMenu();
+            printMenu();
             
             System.out.println("Enter a number to make a selection: ");
             input = s.nextLine();
@@ -51,7 +42,13 @@ public class MediaPlayerApp implements App{
         s.close();
     }
     
-    
+    public void printMenu() {
+        System.out.println("What would you like to do?");
+        System.out.println(" 1 - Add a new media file.");
+        System.out.println(" 2 - Play a media file (by name).");
+        System.out.println(" 3 - Play all media files by type (audio or video).");
+        System.out.println(" 4 - Exit Media Player App.");
+    }
     
     @Override
     public void exitApp() {
