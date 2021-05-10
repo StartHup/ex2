@@ -154,7 +154,11 @@ class PhoneBook{
             return;
         }
 
-        this.phoneBook = quickSortName();
+        Collections.sort(this.phoneBook, new Comparator<Contact>(){
+            public int compare(Contact c1, Contact c2){
+                return String.valueOf(c1.getName()).compareTo(c2.getName());
+            }
+        });
     }
 
     public void sortByNumber(){
@@ -232,41 +236,7 @@ class PhoneBook{
         return phoneBook.size() == 0;
     }
 
-    public ArrayList<Contact> quickSortName(){
-        if (isListEmpty()) //base case
-            return phoneBook;
-
-        ArrayList<Contact> sorted;
-        ArrayList<Contact> smaller = new ArrayList<Contact>(); 
-        ArrayList<Contact> greater = new ArrayList<Contact>(); 
-        Contact pivot = phoneBook.get(0); // pivot is the first element
-        int i,k = 0,c;
-        Contact j;  
-        
-        for (i=1;i<phoneBook.size();i++) //loop the phoneBook
-        {
-            k = 0;
-            j=phoneBook.get(i);
-            c = j.getName().length();
-            while(j.getName().charAt(k)==pivot.getName().charAt(k) && k<c-1)//dealing with names begin identicaly 
-                k++;
-            if (j.getName().charAt(k)<pivot.getName().charAt(k)) // compare each contact to pivot 
-                smaller.add(j);
-            else
-                greater.add(j);
-        }
-        
-        this.phoneBook = smaller;
-        smaller = quickSortName();
-        this.phoneBook = greater;  
-        greater = quickSortName();  // sort both halfs recursively
-        smaller.add(pivot);          // add initial pivot to the end of the smaller 
-        smaller.addAll(greater);     // add the  greater  to the smaller ones 
-        sorted = smaller;            // assign it to sorted
     
-        return sorted;
-    }
-
     public ArrayList<Contact> quickSortNumber(){
         if (isListEmpty()) //base case
             return phoneBook;
