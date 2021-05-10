@@ -24,10 +24,20 @@ public class MediaPlayerApp implements App{
         String fileType = s.nextLine();
         
         //Check valid file type
+        if (!(isStringDigits(fileType))){
+            System.out.println("Invalid input!");
+            return;
+        }
         
         //Convert input to int
         Integer fileTypeInt = Integer.parseInt(fileType);
-        
+
+        //Check valid file type number
+        if (fileTypeInt != 1 && fileTypeInt != 2){
+            System.out.println("Invalid input!");
+            return;
+        }
+
         //Retrieve name of new file
         System.out.print("Enter the name of the new file (case sensitive): ");
         String fileName = s.nextLine();
