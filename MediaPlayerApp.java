@@ -24,6 +24,7 @@ public class MediaPlayerApp implements App{
         String fileType = s.nextLine();
         
         //Check valid file type
+        
         //Convert input to int
         Integer fileTypeInt = Integer.parseInt(fileType);
         
@@ -63,12 +64,12 @@ public class MediaPlayerApp implements App{
         //Create new file object per chosen type
         if (fileTypeInt == 1) { // 1 = video as defined above
             Media newFile = new VideoFile(fileName, fileLengthInt);
-            mediaList.add(newFile);
+            addNewMediaFile(newFile);
         }
         
         else if (fileTypeInt == 2) { // 2 = audio as defined above
             Media newFile = new AudioFile(fileName, fileLengthInt);
-            mediaList.add(newFile);
+            addNewMediaFile(newFile);
         }
                 
         //Add new file to file list
@@ -94,6 +95,24 @@ public class MediaPlayerApp implements App{
         }
     }
     
+    public void playFileByName(){
+        boolean nameFound = false;
+        System.out.println("Enter file you would like to play: ");
+        String name = s.nextLine();
+        
+        for (Media file : mediaList){
+            if(file.getName().equals(name)){
+                nameFound = true;
+                file.executeFile();
+            }
+        }
+        
+        if (!nameFound){
+            System.out.println("Coulnd't find the file \"" + name + "\".");
+        }
+    }
+
+    
     @Override
     public void runApp(){
         Scanner s = new Scanner(System.in);
@@ -107,13 +126,12 @@ public class MediaPlayerApp implements App{
             
             switch (input){
                 case "1":
-                    System.out.println("Add new file.");
-                    //mediaPlayer.addNewFile();
+                    //System.out.println("Add new file.");
+                    createNewMediaFile();
                 break;
                                 
                 case "2":
-                    System.out.println("Play file");
-                    //mediaPlayer.playMediaFile();
+                    playFileByName();
                 break;
                 
                 case "3":
