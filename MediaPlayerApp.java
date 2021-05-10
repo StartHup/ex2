@@ -104,6 +104,7 @@ public class MediaPlayerApp implements App{
             if(file.getName().equals(name)){
                 nameFound = true;
                 file.executeFile();
+                return;
             }
         }
         
