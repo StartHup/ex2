@@ -73,7 +73,7 @@ public class MediaPlayerApp implements App{
         }
                 
         //Add new file to file list
-        System.out.println("File " + fileName + " added successfully.");
+        System.out.println("File \"" + fileName + "\" added successfully.");
         
         return;
     }
