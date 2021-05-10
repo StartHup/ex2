@@ -1,7 +1,7 @@
 public class CalendarApp implements App {
     
     //List of days with events/meetings
-    BusyDate[] calander;
+    BusyDate[] calendar;
     
     public CalendarApp(){
         calander = new BusyDate[30];
