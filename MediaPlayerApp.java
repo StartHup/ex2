@@ -1,4 +1,4 @@
-import java.util.*; 
+import java.util.*;
 public class MediaPlayerApp implements App{
     
     static Scanner s = new Scanner(System.in);
@@ -20,10 +20,12 @@ public class MediaPlayerApp implements App{
     public void createNewMediaFile(){
         
         //Retrieve file type
-        System.out.println("Enter the type of the new file (video or audio): ");
+        System.out.println("Choose the type of the new file (1 for video, 2 for audio): ");
         String fileType = s.nextLine();
         
         //Check valid file type
+        //Convert input to int
+        Integer fileTypeInt = Integer.parseInt(fileType);
         
         //Retrieve name of new file
         System.out.println("Enter the name of the new file (case sensitive): ");
@@ -37,20 +39,41 @@ public class MediaPlayerApp implements App{
         
         //Input new file length
         System.out.println("Enter file length in seconds: ");
-        String number = s.nextLine();
+        String fileLength = s.nextLine();
 
-        //Check number validity
-        if (!(isStringDigits(number))){
+        //Check input validity
+        if (!(isStringDigits(fileLength))){
             System.out.println("Only digits allowed in file length!");
             return;
         }
-
-        //Create contact
-        Media contact = new Contact(name, number);
         
-        //Add contact to phonebook
-        phoneBook.add(contact);
-        System.out.println("Contact " + contact + " added successfully");
+        //Convert length to int
+        Integer fileLengthInt = Integer.parseInt(fileLength);
+        
+        //Check number validity: must be positive and less than 2,000,000,000
+        if (fileLengthInt < 0){
+            System.out.println("File length must be positive!");
+            return;
+        }
+        if (fileLengthInt > 2000000000){
+            System.out.println("File length must not exceed 2 billion seconds!");
+            return;
+        }
+        
+        //Create new file object per chosen type
+        if (fileTypeInt == 1) { // 1 = video as defined above
+            Media newFile = new VideoFile(fileName, fileLengthInt);
+            mediaList.add(newFile);
+        }
+        
+        else if (fileTypeInt == 2) { // 2 = audio as defined above
+            Media newFile = new AudioFile(fileName, fileLengthInt);
+            mediaList.add(newFile);
+        }
+                
+        //Add new file to file list
+        System.out.println("File " + fileName + " added successfully.");
+        
         return;
     }
     
