@@ -17,10 +17,8 @@ public abstract class Media{
         Integer minutes = (this.getLength() / 60) % 60;
         Integer seconds = this.getLength() % 60;
         
-        String length = hours + ":" + minutes + ":" + seconds;
-
-        //For testing only
-        System.out.println(length);
+        String length = hours +  " hours, " + minutes + " minutes, and " 
+            + seconds + " seconds.";
 
         return length;
         
