@@ -12,8 +12,8 @@ public class AudioFile extends Media {
     
     public void executeFile() {
         System.out.println();
-        System.out.println("Audio file \"" + this.getName() + "\" playing for " 
-            + this.formatLength());
+        System.out.println("Audio file \"" + this.getName() 
+            + "\" is now playing for " + this.formatLength());
     }
     
 }

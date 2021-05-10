@@ -123,6 +123,15 @@ public class MediaPlayerApp implements App{
         }
     }
 
+    public void playAllFiles(){
+        //Initialize iterator for media list
+        Iterator<Media> mediaIterator = mediaList.iterator();
+        //Execute each media file via iterator
+        while (mediaIterator.hasNext()){
+            mediaIterator.next().executeFile();
+        }
+    }
+
     
     @Override
     public void runApp(){
@@ -146,8 +155,8 @@ public class MediaPlayerApp implements App{
                 break;
                 
                 case "3":
-                    System.out.println("playAllFilesByType");
-                    //mediaPlayer.playAllFilesByType();
+                    //System.out.println("playAllFiles");
+                    playAllFiles();
                 break;
                 
                 case "4":

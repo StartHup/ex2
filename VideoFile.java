@@ -12,8 +12,8 @@ public class VideoFile extends Media {
     
     public void executeFile() {
         System.out.println();
-        System.out.println("Video file \"" + this.getName() + "\" is playing for " 
-            + this.formatLength());
+        System.out.println("Video file \"" + this.getName() 
+            + "\" is now playing for " + this.formatLength());
     }
     
 }
