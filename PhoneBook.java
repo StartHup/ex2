@@ -31,6 +31,14 @@ class PhoneBook{
             System.out.println("Improper name length! Must be between 1 and 30 characters.");
             return;
         }
+
+        //Check if the name doesn't exist
+        for (Contact contact : phoneBook){
+            if(contact.getName().equals(name)){
+                System.out.println("There is a contact with that same name.");
+                return;
+            }           
+        }
         
         //Input new contact number
         System.out.println("Enter phone number. Must be exactly 9 or 10 digits long: ");
@@ -236,7 +244,7 @@ class PhoneBook{
         return phoneBook.size() == 0;
     }
 
-    
+
     public ArrayList<Contact> quickSortNumber(){
         if (isListEmpty()) //base case
             return phoneBook;
