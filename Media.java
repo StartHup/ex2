@@ -1,15 +1,14 @@
-import java.util.*; 
 public abstract class Media{
-    String name;
-    int length;
+    String fileName;
+    int fileLength;
     //C'tor
     
     public String getName() {
-        return name;
+        return fileName;
     }
         
     public int getLength() {
-        return length;
+        return fileLength;
     }
 
     public String formatLength() {
@@ -28,6 +27,5 @@ public abstract class Media{
     }
     
     public abstract void executeFile();
-    
     public abstract String getMediaType();
 } 
