@@ -1,6 +1,6 @@
 public class AudioFile extends Media {
     
-    public AudioFile(String fileName, int fileLength){
+    public AudioFile(String fileName, Integer fileLength){
         //Input validation happens in MediaPlayerApp.java
         this.fileName = fileName;
         this.fileLength = fileLength;
