@@ -20,7 +20,7 @@ public class MediaPlayerApp implements App{
     public void createNewMediaFile(){
         
         //Retrieve file type
-        System.out.println("Choose the type of the new file (1 for video, 2 for audio): ");
+        System.out.print("Choose the type of the new file (1 for video, 2 for audio): ");
         String fileType = s.nextLine();
         
         //Check valid file type
@@ -29,7 +29,7 @@ public class MediaPlayerApp implements App{
         Integer fileTypeInt = Integer.parseInt(fileType);
         
         //Retrieve name of new file
-        System.out.println("Enter the name of the new file (case sensitive): ");
+        System.out.print("Enter the name of the new file (case sensitive): ");
         String fileName = s.nextLine();
         
         //Check name validity
@@ -39,7 +39,7 @@ public class MediaPlayerApp implements App{
         }
         
         //Input new file length
-        System.out.println("Enter file length in seconds: ");
+        System.out.print("Enter file length in seconds: ");
         String fileLength = s.nextLine();
 
         //Check input validity
@@ -97,7 +97,7 @@ public class MediaPlayerApp implements App{
     
     public void playFileByName(){
         boolean nameFound = false;
-        System.out.println("Enter file you would like to play: ");
+        System.out.print("Enter file you would like to play: ");
         String name = s.nextLine();
         
         for (Media file : mediaList){
@@ -121,7 +121,7 @@ public class MediaPlayerApp implements App{
         while (!input.equals("4")){
             printMenu();
             
-            System.out.println("Enter a number to make a selection: ");
+            System.out.print("Enter a number to make a selection: ");
             input = s.nextLine();
             
             switch (input){
@@ -148,12 +148,14 @@ public class MediaPlayerApp implements App{
                 default:
                 System.out.println("Invalid input. Please try again.\n");
             }
-            System.out.println("");
         }
         s.close();
     }
     
     public void printMenu() {
+        System.out.println();
+        System.out.println("------------------------");
+        System.out.println();
         System.out.println("What would you like to do?");
         System.out.println(" 1 - Add a new media file.");
         System.out.println(" 2 - Play a media file (by name).");
