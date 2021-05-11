@@ -4,7 +4,7 @@ public class CalendarApp implements App {
     protected BusyDate[] calendar;
     
     public CalendarApp(){
-        calander = new BusyDate[30];
+        calendar = new BusyDate[30];
     }
   
     @Override
