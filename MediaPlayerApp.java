@@ -30,7 +30,7 @@ public class MediaPlayerApp implements App{
         }
         
         //Convert input to int
-        Integer fileTypeInt = Integer.parseInt(fileType);
+        int fileTypeInt = Integer.parseInt(fileType);
 
         //Check valid file type number
         if (fileTypeInt != 1 && fileTypeInt != 2){
@@ -59,7 +59,7 @@ public class MediaPlayerApp implements App{
         }
         
         //Convert length to int
-        Integer fileLengthInt = Integer.parseInt(fileLength);
+        int fileLengthInt = Integer.parseInt(fileLength);
         
         //Check number validity: must be positive and less than 2,000,000,000
         if (fileLengthInt < 0){
