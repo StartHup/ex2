@@ -106,29 +106,23 @@ public class MediaPlayerApp implements App{
     }
     
     public void playFileByName(){
-        boolean nameFound = false;
         System.out.print("Enter file you would like to play: ");
         String name = s.nextLine();
         
         for (Media file : mediaList){
             if(file.getName().equals(name)){
-                nameFound = true;
                 file.executeFile();
                 return;
             }
         }
         
-        if (!nameFound){
-            System.out.println("Coulnd't find the file \"" + name + "\".");
-        }
+        System.out.println("Coulnd't find the file \"" + name + "\".");
+        
     }
 
     public void playAllFiles(){
-        //Initialize iterator for media list
-        Iterator<Media> mediaIterator = mediaList.iterator();
-        //Execute each media file via iterator
-        while (mediaIterator.hasNext()){
-            mediaIterator.next().executeFile();
+        for (Media file : mediaList){
+            file.executeFile();
         }
     }
 
