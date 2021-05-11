@@ -1,10 +1,10 @@
 import java.util.*;
 public class MediaPlayerApp implements App{
     
-    static Scanner s = new Scanner(System.in);
+    private static Scanner s = new Scanner(System.in);
     
     //Linked list to store all the media
-    ArrayList<Media> mediaList;
+    private ArrayList<Media> mediaList;
     
     //Constructor
     public MediaPlayerApp() {

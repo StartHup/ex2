@@ -1,6 +1,6 @@
 public abstract class Media{
-    String fileName;
-    Integer fileLength;
+    protected String fileName;
+    protected Integer fileLength;
     //C'tor
     
     public String getName() {
