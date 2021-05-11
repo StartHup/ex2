@@ -1,21 +1,21 @@
 public abstract class Media{
     protected String fileName;
-    protected Integer fileLength;
+    protected int fileLength;
     //C'tor
     
     public String getName() {
         return fileName;
     }
         
-    public Integer getLength() {
+    public int getLength() {
         return fileLength;
     }
 
     public String formatLength() {
         //Trust the math, it works :)
-        Integer hours = this.getLength() / 3600;
-        Integer minutes = (this.getLength() / 60) % 60;
-        Integer seconds = this.getLength() % 60;
+        int hours = this.getLength() / 3600;
+        int minutes = (this.getLength() / 60) % 60;
+        int seconds = this.getLength() % 60;
         
         String length = hours +  " hours, " + minutes + " minutes, and " 
             + seconds + " seconds.";
