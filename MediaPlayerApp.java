@@ -146,7 +146,6 @@ public class MediaPlayerApp implements App{
             
             switch (input){
                 case "1":
-                    //System.out.println("Add new file.");
                     createNewMediaFile();
                 break;
                                 
@@ -155,7 +154,6 @@ public class MediaPlayerApp implements App{
                 break;
                 
                 case "3":
-                    //System.out.println("playAllFiles");
                     playAllFiles();
                 break;
                 
