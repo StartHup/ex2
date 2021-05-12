@@ -1,17 +1,17 @@
 import java.util.*; 
 import java.io.*;  // Import the File class
 
-class PhoneBook{
+class PhoneBookApp {
     static Scanner s = new Scanner(System.in);
     ArrayList<Contact> phoneBook;
 
     //constructor
-    public PhoneBook(){
+    public PhoneBookApp() {
         phoneBook = new ArrayList<Contact>();
     } 
     
     //copy constructor
-    public PhoneBook(PhoneBook other){
+    public PhoneBookApp(PhoneBookApp other) {
         this.phoneBook = new ArrayList<Contact>(other.phoneBook);
     }
 
