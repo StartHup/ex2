@@ -1,10 +1,10 @@
 public class CalendarApp implements App {
     
     //List of days with events/meetings
-    BusyDate[] calendar;
+    protected BusyDate[] calendar;
     
     public CalendarApp(){
-        calander = new BusyDate[30];
+        calendar = new BusyDate[30];
     }
   
     @Override
