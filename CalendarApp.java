@@ -10,13 +10,17 @@ public class CalendarApp implements App {
     @Override
     public void runApp() {
         // TODO Auto-generated method stub
-
+        System.out.println("Calender not ready");
     }
   
     @Override
     public void exitApp() {
         // TODO Auto-generated method stub
 
+    }
+    @Override 
+    public String getAppName(){
+        return "Calender";
     }
 
 }
