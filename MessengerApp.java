@@ -15,7 +15,7 @@ public class MessengerApp implements App{
     }
 
     @Override
-    public void printAllContens() {
+    public void printAllContents() {
         // TODO Auto-generated method stub
         
     }

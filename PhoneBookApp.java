@@ -287,7 +287,7 @@ class PhoneBookApp implements App{
     }
 
     @Override
-    public void printAllContens(){
+    public void printAllContents(){
         this.printPhonebook();
     }
 

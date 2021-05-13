@@ -10,7 +10,7 @@ class TestMobilePhone{
         apps[3] = vlc;
         vlc.addNewMediaFile(new VideoFile("video 1",1000000));
         vlc.addNewMediaFile(new AudioFile("song 1", 17));
-        System.out.println("To choose app enter 1. To print all contens enter 2. To exit enter 3");
+        System.out.println("To choose app enter 1. To print all contenאs enter 2. To exit enter 3");
         String choice = s.next();
         while (!choice.equals("3")){
             switch (choice){
@@ -43,7 +43,7 @@ class TestMobilePhone{
     }
     public static void printAllAppsContens(App[] apps){
         for(App app: apps){
-            app.printAllContens();
+            app.printAllContents();
         }
     }
 }

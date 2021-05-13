@@ -121,7 +121,7 @@ public class MediaPlayerApp implements App{
     }
 
     @Override
-    public void printAllContens(){
+    public void printAllContents(){
         playAllFiles();
     }
 
