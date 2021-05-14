@@ -293,7 +293,7 @@ class PhoneBookApp implements App{
 
     @Override
     public void exitApp(){
-        System.out.println("Exiting Contacts.");
+        System.out.println("Exiting Phonebook app and returning to main menu.");
         s.close();
     }
     
