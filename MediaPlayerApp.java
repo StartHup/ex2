@@ -166,7 +166,6 @@ public class MediaPlayerApp implements App{
                 System.out.println("Invalid input. Please try again.\n");
             }
         }
-        //s.cdlose();
     }
     
     public void printMenu() {
