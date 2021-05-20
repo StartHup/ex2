@@ -14,4 +14,15 @@ public class MessengerApp implements App{
 
     }
 
+    @Override
+    public void printAllContents() {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public String getAppName() {
+        return "Messenger";
+    }
+
 } 

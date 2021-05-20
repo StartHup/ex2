@@ -1,7 +1,7 @@
 import java.util.*; 
 import java.io.*;  // Import the File class
 
-class PhoneBookApp {
+class PhoneBookApp implements App{
     static Scanner s = new Scanner(System.in);
     ArrayList<Contact> phoneBook;
 
@@ -281,4 +281,107 @@ class PhoneBookApp {
 
         return sorted;
     }
+    @Override
+    public void runApp(){
+        menu();
+    }
+
+    @Override
+    public void printAllContents(){
+        this.printPhonebook();
+    }
+
+    @Override
+    public void exitApp(){
+        System.out.println("Exiting Phonebook app and returning to main menu.");
+        s.close();
+    }
+    
+    @Override
+    public String getAppName(){
+        return "PhoneBook";
+    }
+    //Switchcase for menu
+    private void menu(){
+        Scanner s = new Scanner(System.in);
+        String input = "";
+        
+        while (!input.equals("11")){
+            printMenu();
+            
+            System.out.println("Enter a number to make a selection: ");
+            input = s.nextLine();
+            
+            switch (input){
+                case "1":
+                    this.addContact();
+                break;
+                
+                case "2":
+                    this.removeContact();
+                break;
+                
+                case "3":
+                    this.printPhonebook();
+                break;
+                
+                case "4":
+                    this.searchByName();
+                break;
+                
+                case "5":
+                    this.sortByName();
+                break;
+                
+                case "6":
+                    this.sortByNumber();
+                break;
+                                
+                case "7":
+                    //Remove duplicates function here
+                    this.removeDuplicates();
+                break;
+                
+                case "8":
+                    //Reverse order of phonebook function here
+                    this.reversePhoneBook();
+                break;
+                
+                case "9":
+                    //Export contacts to txt file function here
+                    this.exportToFile();
+                break;
+                
+                case "10":
+                    //Import contacts from txt file function here
+                    this.importFromFile();
+                break;
+                
+                case "11":
+                    //Exit gracefully
+                    System.out.println("Exiting...");
+                break;
+                
+                default:
+                System.out.println("Invalid input. Please try again.\n");
+            }
+            System.out.println("");
+            
+        }
+    }
+    private void printMenu(){
+        System.out.println("What would you like to do?");
+        System.out.println(" 1 - Add a new contact.");
+        System.out.println(" 2 - Delete a contact.");
+        System.out.println(" 3 - Print phonebook.");
+        System.out.println(" 4 - Search for contact.");
+        System.out.println(" 5 - Sort phonebook by name.");
+        System.out.println(" 6 - Sort phonebook by phone number.");
+        System.out.println(" 7 - Remove duplicates.");
+        System.out.println(" 8 - Reverse order of phonebook.");
+        System.out.println(" 9 - Export contacts to txt file.");
+        System.out.println("10 - Import contacts from txt file.");
+        System.out.println("11 - Exit");
+    }
+
 }

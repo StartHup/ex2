@@ -120,6 +120,11 @@ public class MediaPlayerApp implements App{
         
     }
 
+    @Override
+    public void printAllContents(){
+        playAllFiles();
+    }
+
     public void playAllFiles(){
         for (Media file : mediaList){
             file.executeFile();
@@ -161,7 +166,6 @@ public class MediaPlayerApp implements App{
                 System.out.println("Invalid input. Please try again.\n");
             }
         }
-        s.close();
     }
     
     public void printMenu() {
@@ -177,8 +181,14 @@ public class MediaPlayerApp implements App{
     
     @Override
     public void exitApp() {
-        // TODO Auto-generated method stub
+        s.close();
+        System.out.println("Exiting media");
 
+    }
+
+    @Override
+    public String getAppName() {
+        return "Media";
     }
 
 } 
