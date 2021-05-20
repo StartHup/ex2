@@ -18,7 +18,7 @@ class TestMobilePhone{
                     app(apps);
                 break;
                 case "2":
-                    printAllAppsContens(apps);
+                    printAllAppsContents(apps);
                 break;  
                 case "3":
                     System.out.println("Exiting.");
