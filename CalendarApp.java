@@ -1,10 +1,13 @@
+import java.util.*;
+
 public class CalendarApp implements App {
     
     //List of days with events/meetings
     protected BusyDate[] calendar;
     
     public CalendarApp(){
-        calendar = new BusyDate[30];
+        //calendar = new BusyDate[30];
+        ArrayList<BusyDate>[] cal = new ArrayList[30];  //Change to calendar
     }
   
     @Override
