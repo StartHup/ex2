@@ -219,6 +219,20 @@ public class CalendarApp implements App {
 
     // }
 
+    
+
+    public void userRemoveEntry(){
+        System.out.print("Enter day of entry to be removed: ");
+        String day = s.nextLine();
+        int dayInt = Integer.parseInt(day);
+
+        System.out.print("Enter ")
+    }
+
+    public void removeEntry(int index, int day){
+        Calendar.get(day).remove(index);
+    }
+
     @Override
     public void runApp() {
         Scanner s = new Scanner(System.in);
