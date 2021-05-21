@@ -19,7 +19,13 @@ The supporting files are Media, AudioFile, VideoFile.
 
 Media is an abstract class. It includes the basic data that all types of media files will have. It also includes the implementation of the basic functions that all types of media files will share. However there will be no objects created with this class, as the actual files will have a specific type. Thus Media is an abstract class and not an interface. 
 
-There are two classes which extend Media, one for each type of media. These AudioFile and VideoFile. 
+There are two classes which extend Media, one for each type of media. These are AudioFile and VideoFile. They use the shared functionality of the parent class and each make relevent changes for their respective types.
 
+### Calendar
+Similar to the Media app, there is an abstract class called BusyDate which contains basic data that all types of calendar entires will have, ie the duration and the Date object. Again, there will be no objects created with this class, as the actual calandar entries will have a specific type (meeting or event). Thus BusyDate is an abstract class and not an interface.
+
+There are two classes which extend BusyDate, one for each type of calendar entry. These are Meeting and Event. Meeting is with a specific Contact an Event is private. They use the shared functionality of the parent class and each make relevent changes for their respective types.
+
+### Messenger
 
 
