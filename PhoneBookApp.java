@@ -87,6 +87,7 @@ class PhoneBookApp implements App{
             //Check if next contact matches name
             if (itr.next().getName().equals(name)){
                 itr.remove();
+                
                 System.out.println("Successfully removed " + name);
                 return;
             }

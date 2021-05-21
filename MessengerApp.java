@@ -59,6 +59,11 @@ class MessengerApp implements App{
         }
     }
 
+    public void romoveContact(Contact c){
+        if(chains.containsKey(c)){
+            chains.remove(c);
+        }
+    }
     public void searchForPhrase(){
         System.out.println("What phrase should we find?");
         String text = s.next();
@@ -141,7 +146,6 @@ class MessengerApp implements App{
         }
     }
     
-
     private void printMenu(){
         System.out.println("What would you like to do?");
         System.out.println(" 1 - Add new message.");

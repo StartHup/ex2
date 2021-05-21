@@ -28,7 +28,6 @@ class MessegaChain{
         for(String message: messages){
             ret += message +"\n";
         }
-        ret += "";
         return ret;
     }
 
