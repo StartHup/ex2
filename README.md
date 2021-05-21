@@ -12,7 +12,14 @@ In addition, each app has supporting classes which are used to store the data. W
 ### PhonebookApp
 This is the most simple of all the apps. The only supporting class is called Contact and is a standalone class which does not inherit or implement anything. Contact containts the data for each individual contact, that being the name and phone number. It also includes getter and setter functions to access the data.
 
-The phonebook itself stores the contact objects in an ArrayList. When a new contact is added by the user, the program creates a new Contact object and adds it to the ArrayList.
+The phonebook itself stores the contact objects in an ArrayList. When a new contact is added by the user, the program creates a new Contact object and adds it to the ArrayList. This happens within the PhonebookApp object which was created in the main.
+
+### MediaApp
+The supporting files are Media, AudioFile, VideoFile. 
+
+Media is an abstract class. It includes the basic data that all types of media files will have. It also includes the implementation of the basic functions that all types of media files will share. However there will be no objects created with this class, as the actual files will have a specific type. Thus Media is an abstract class and not an interface. 
+
+There are two classes which extend Media, one for each type of media. These AudioFile and VideoFile. 
 
 
 
