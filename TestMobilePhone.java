@@ -5,7 +5,7 @@ class TestMobilePhone{
     public static App[] apps = new App[4];
     public static void main(String[] args){
         
-        MessangerApp whatsapp = new MessangerApp(); 
+        MessengerApp whatsapp = new MessengerApp(); 
         apps[0] = new CalendarApp();
         apps[1] = new PhoneBookApp();
         apps[2] = whatsapp;
