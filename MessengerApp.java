@@ -23,7 +23,7 @@ class MessengerApp implements App{
             }
             System.out.println("Message send successfuly");
         } catch(Exception ex){
-            System.out.println(name + "is not a contact");
+            System.out.println(name + " is not a contact");
         }
 
     }
@@ -39,7 +39,7 @@ class MessengerApp implements App{
             }
             System.out.println("No more messages with " + name);
         } catch(Exception ex){
-            System.out.println(name + "is not a contact");
+            System.out.println(name + " is not a contact");
         }
     }
 
@@ -55,7 +55,7 @@ class MessengerApp implements App{
                 System.out.println("No messages with " + name);
             }
         } catch(Exception ex){
-            System.out.println(name + "is not a contact");
+            System.out.println(name + " is not a contact");
         }
     }
 
@@ -64,11 +64,13 @@ class MessengerApp implements App{
         String text = s.next();
         boolean found = false;
         for(Contact contact: chains.keySet()){
-            for(String message: chains.get(contact).getMessages()){
-                if(message.indexOf(text) > -1){
-                    System.out.println(contact.getName());
-                    break;
+            if(chains.get(contact).doesStringExist(text)){
+                //if we havn't found yet, print header
+                if(!found){
+                    found = true;
+                    System.out.println("Contacts with your phrase:");
                 }
+                System.out.println(contact.getName());
             }
         }
         if(!found){
