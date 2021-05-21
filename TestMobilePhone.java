@@ -1,6 +1,7 @@
 import java.util.*;
 class TestMobilePhone{
     static Scanner s = new Scanner(System.in);
+    //all apps can see all apps
     public static App[] apps = new App[4];
     public static void main(String[] args){
         
