@@ -134,6 +134,14 @@ class PhoneBookApp implements App{
         System.out.println("Phonebook reversed.");
     }
 
+    public Contact getContactByName(String name) throws Exception{
+        for (Contact contact : phoneBook){
+            if(contact.getName().equals(name)){
+                return contact;
+            }
+        }
+        throw new Exception("Not found");
+    }
     public void searchByName(){
         boolean nameFound = false;
         System.out.println("Enter name you are seaching for:");
