@@ -3,147 +3,276 @@ import java.util.*;
 public class CalendarApp implements App {
 
     private static Scanner s = new Scanner(System.in);
-    
-    //List of days with events/meetings
+
+    // List of days with events/meetings
     protected ArrayList<BusyDate>[] Calendar;
-    
-    public CalendarApp(){
-        //Up to and including day 30, we will ignore day 0
+
+    public CalendarApp() {
+        // Up to and including day 30, we will ignore day 0
         Calendar = new ArrayList[31];
         // initializing
-        for (int i = 1; i < 31; i++){
+        for (int i = 1; i < 31; i++) {
             Calendar[i] = new ArrayList<BusyDate>();
-        }  
+        }
     }
 
-    public void createNewBusyDate(){
-        //Retrieve occasion type
+    public void createNewBusyDate() {
+        // Retrieve entry type
         System.out.print("Choose the type of the new entry (1 for meeting, 2 for event): ");
         String entryType = s.nextLine();
-        
-        //Check valid occasion type
-        if (!(isStringDigits(entryType))){
+
+        // Check valid entry type
+        if (!(isStringDigits(entryType))) {
             System.out.println("Invalid input!");
             return;
         }
 
-        //Convert input to int
+        // Convert input to int
         int entryTypeInt = Integer.parseInt(entryType);
 
-        //Check valid occasion type number
-        if (entryTypeInt != 1 && entryTypeInt != 2){
+        // Check valid occasion type number
+        if (entryTypeInt != 1 && entryTypeInt != 2) {
             System.out.println("Invalid input!");
             return;
         }
 
-        //Retrieve date of month
+        // Retrieve date of month
         System.out.print("Enter the date of entry (between 1-30): ");
         String entryDate = s.nextLine();
 
-        //Check valid input
-        if (!(isStringDigits(entryDate))){
+        // Check valid input
+        if (!(isStringDigits(entryDate))) {
             System.out.println("Invalid input!");
             return;
         }
 
-        //Convert input to int
+        // Convert input to int
         int entryDateInt = Integer.parseInt(entryDate);
 
-        //Check valid date
-        if (entryDateInt < 1 || entryDateInt > 30){
+        // Check valid date
+        if (entryDateInt < 1 || entryDateInt > 30) {
             System.out.println("Invalid input!");
             return;
         }
 
+        // Retrieve hour of event
+        System.out.print("Enter hour of event (0-24): ");
+        String hour = s.nextLine();
 
-        //Retrieve duration of event
+        // Check valid format
+        if (!(isStringDigits(hour))) {
+            System.out.println("Invalid input!");
+            return;
+        }
+
+        int hourInt = Integer.parseInt(hour);
+        if (hourInt < 0 || hourInt > 23) {
+            System.out.println("Invalid input!");
+        }
+
+        // Retrieve minutes of event
+        System.out.print("Enter minute of event (0-59): ");
+        String minutes = s.nextLine();
+
+        // Check valid format
+        if (!(isStringDigits(minutes))) {
+            System.out.println("Invalid input!");
+            return;
+        }
+
+        int minutesInt = Integer.parseInt(minutes);
+        if (minutesInt < 0 || minutesInt > 59) {
+            System.out.println("Invalid input!");
+        }
+
+        // Retrieve duration of event
         System.out.print("Enter the duration of entry (in minutes): ");
         String duration = s.nextLine();
 
-        //Check valid input
-        if (!(isStringDigits(duration))){
+        // Check valid input
+        if (!(isStringDigits(duration))) {
             System.out.println("Invalid input!");
             return;
         }
 
-        //Convert input to int
+        // Convert input to int
         int durationInt = Integer.parseInt(duration);
 
-        //Check valid duration
-        if (durationInt < 1){
+        // Check valid duration
+        if (durationInt < 1) {
             System.out.println("Invalid input!");
             return;
         }
 
-        if (entryTypeInt == 1){
+        if (entryTypeInt == 1) {
             System.out.print("Enter name of contact for meeting: ");
             String con = s.nextLine();
-            //check that contact exists
-            try{
-                Contact contact = ((PhoneBookApp)(TestMobilePhone.apps[2])).getContactByName(con);
-                //CALL CONSTRUCTOR HERE
+            // check that contact exists
+            try {
+                Contact contact = ((PhoneBookApp) (TestMobilePhone.apps[1])).getContactByName(con);
+                // CALL CONSTRUCTOR HERE
+                Date date = new Date(0, 0, entryDateInt, hourInt, minutesInt);
+                Meeting meeting = new Meeting(date, durationInt, contact);
+
+                // Iterate through existing entries on this date
+                Iterator<BusyDate> itr = Calendar[entryDateInt].iterator();
+                int count = 0;
+                while (itr.hasNext()) {
+                    // Add this entry after first date that this succeeds
+                    if (itr.next().after(date)) {
+                        Calendar[entryDateInt].add(count, meeting);
+                    }
+                    count++;
+                }
+
+                // Calendar[entryDateInt].add(meeting);
+                System.out.println("Meeting added.");
             }
-            //If contact doesn't exist (function throws exception)
-            catch(Exception err){
+            // If contact doesn't exist (method throws exception)
+            catch (Exception err) {
                 System.out.println("Contact does not exist!");
                 return;
             }
         }
 
-        if (entryTypeInt == 2){
+        if (entryTypeInt == 2) {
             System.out.print("Enter short description of event: ");
-            //CALL CONSTRUCTOR HERE
+            String description = s.nextLine();
+
+            // CALL CONSTRUCTOR HERE
+            Date date = new Date(0, 0, entryDateInt, hourInt, minutesInt);
+            Event event = new Event(date, durationInt, description);
+            // Iterate through existing entries on this date
+            Iterator<BusyDate> itr = Calendar[entryDateInt].iterator();
+            int count = 0;
+            while (itr.hasNext()) {
+                // Add this entry after first date that this succeeds
+                if (itr.next().after(date)) {
+                    Calendar[entryDateInt].add(count, event);
+                }
+                count++;
+            }
+            System.out.println("Event added.");
         }
 
     }
 
-    
-    public printCalendar(){
+    public void printEntriesByDay() {
+        System.out.print("Enter day to print: ");
+        String day = s.nextLine();
+
+        // Check valid input
+        if (!(isStringDigits(day))) {
+            System.out.println("Invalid input!");
+            return;
+        }
+
+        int dayInt = Integer.parseInt(day);
+        if (dayInt < 1 || dayInt > 30) {
+            System.out.println("Invalid input!");
+            return;
+        }
+
+        Iterator<BusyDate> itr = Calendar[dayInt].iterator();
+        while (itr.hasNext()) {
+            BusyDate current = itr.next();
+            current.printEntry();
+
+            for (BusyDate entry : Calendar[dayInt]) {
+                entry.printEntry();
+            }
+        }
+    }
+
+    public void printCalendar() {
         // I will take your function of print by day and run for all days.
     }
-    
-    public printAllMeetingsForContact(){
 
-    }
+    // public printAllMeetingsForContact(){
 
-    public overlapsCheck(){
+    // }
 
+    // public overlapsCheck(){
 
-    }
+    // }
 
     @Override
     public void runApp() {
-        // TODO Auto-generated method stub
-        System.out.println("Calendar not ready");
+        Scanner s = new Scanner(System.in);
+        String input = "";
+
+        while (!input.equals("7")) {
+            printMenu();
+
+            System.out.print("Enter a number to make a selection: ");
+            input = s.nextLine();
+
+            switch (input) {
+                case "1":
+                    createNewBusyDate();
+                    break;
+
+                case "2":
+                    break;
+
+                case "3":
+                    printEntriesByDay();
+                    break;
+
+                case "7":
+                    // Exit gracefully
+                    System.out.println("Exiting Calendar App...");
+                    break;
+
+                default:
+                    System.out.println("Invalid input. Please try again.\n");
+            }
+        }
     }
-  
-    @Override
-    public void exitApp() {
-        // TODO Auto-generated method stub
+
+    public void printMenu() {
+        System.out.println();
+        System.out.println("------------------------");
+        System.out.println();
+        System.out.println("What would you like to do?");
+        System.out.println(" 1 - Add entry to calendar.");
+        System.out.println(" 2 - Remove entry from calendar.");
+        System.out.println(" 3 - Print all entries of day in order.");
+        System.out.println(" 4 - Print all meetings with specific contact.");
+        System.out.println(" 5 - Find and resolve conflicts.");
+        System.out.println(" 6 - Print all entries.");
+        System.out.println(" 7 - Exit app.");
 
     }
-    @Override 
-    public String getAppName(){
+
+    @Override
+    public void exitApp() {
+        s.close();
+        System.out.println("Exiting Calendar");
+
+    }
+
+    @Override
+    public String getAppName() {
         return "Calendar";
     }
 
     @Override
     public void printAllContents() {
         // TODO Auto-generated method stub
-        this.printCalendar();
+        // this.printCalendar();
     }
 
-}
+    public boolean isStringDigits(String string) {
+        try {
+            // If parseInt completes properly => string is entirely digits
+            Integer.parseInt(string);
+            return true;
+        }
 
-public boolean isStringDigits(String string){
-    try {
-        //If parseInt completes properly => string is entirely digits
-        Integer.parseInt(string);
-        return true;
-    }
-  
-    //If NumberFormatException caught => there is a nondigit somewhere
-    catch (NumberFormatException e){
-        return false;
+        // If NumberFormatException caught => there is a nondigit somewhere
+        catch (NumberFormatException e) {
+            return false;
+        }
     }
 }
