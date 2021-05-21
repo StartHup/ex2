@@ -1,8 +1,10 @@
 import java.util.*;
+
 class TestMobilePhone{
+
+    public static App[] apps = new App[4];
     static Scanner s = new Scanner(System.in);
     public static void main(String[] args){
-        App[] apps = new App[4];
         apps[0] = new CalendarApp();
         apps[1] = new PhoneBookApp();
         apps[2] = new MessengerApp();

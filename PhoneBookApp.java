@@ -244,6 +244,15 @@ class PhoneBookApp implements App{
         return phoneBook.size() == 0;
     }
 
+    public Contact getContactByName(String name) throws Exception{
+        for (Contact contact : phoneBook){
+            if(contact.getName().equals(name)){
+                return contact;
+            }
+        }
+        throw new Exception("Not found");
+    }
+
 
     public ArrayList<Contact> quickSortNumber(){
         if (isListEmpty()) //base case

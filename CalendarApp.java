@@ -37,7 +37,7 @@ public class CalendarApp implements App {
         }
 
         //Retrieve date of month
-        System.out.print("Enter the date of entry (between 1-30)");
+        System.out.print("Enter the date of entry (between 1-30): ");
         String entryDate = s.nextLine();
 
         //Check valid input
@@ -57,7 +57,7 @@ public class CalendarApp implements App {
 
 
         //Retrieve duration of event
-        System.out.print("Enter the duration of entry (in minutes)");
+        System.out.print("Enter the duration of entry (in minutes): ");
         String duration = s.nextLine();
 
         //Check valid input
@@ -73,6 +73,26 @@ public class CalendarApp implements App {
         if (durationInt < 1){
             System.out.println("Invalid input!");
             return;
+        }
+
+        if (entryTypeInt == 1){
+            System.out.print("Enter name of contact for meeting: ");
+            String con = s.nextLine();
+            //check that contact exists
+            try{
+                Contact contact = ((PhoneBookApp)(TestMobilePhone.apps[2])).getContactByName(con);
+                //CALL CONSTRUCTOR HERE
+            }
+            //If contact doesn't exist (function throws exception)
+            catch(Exception err){
+                System.out.println("Contact does not exist!");
+                return;
+            }
+        }
+
+        if (entryTypeInt == 2){
+            System.out.print("Enter short description of event: ");
+            //CALL CONSTRUCTOR HERE
         }
 
     }
