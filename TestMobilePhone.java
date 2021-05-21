@@ -18,9 +18,7 @@ class TestMobilePhone{
         PhoneBookApp pb = (PhoneBookApp)(apps[1]);
         pb.addContact(new Contact("Shira", "123123"));
         pb.addContact(new Contact("J", "12313"));
-        whatsapp.addMessage();
-        whatsapp.addMessage();
-        whatsapp.addMessage();
+        
 
         System.out.println("To choose app enter 1. To print all contents enter 2. To exit enter 3");
         String choice = s.next();
