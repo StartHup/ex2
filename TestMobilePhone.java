@@ -38,7 +38,7 @@ class TestMobilePhone{
                 default:
                     System.out.println("Bad input!");    
             }
-            System.out.println("To choose app enter 1. To print all contens enter 2. To exit enter 3");
+            System.out.println("To choose app enter 1. To print all contents enter 2. To exit enter 3");
             choice = s.next();
         }
     }
