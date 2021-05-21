@@ -5,14 +5,14 @@ public class CalendarApp implements App {
     private static Scanner s = new Scanner(System.in);
 
     // List of days with events/meetings
-    protected ArrayList<BusyDate>[] Calendar;
+    protected ArrayList<ArrayList<BusyDate>> Calendar;
 
     public CalendarApp() {
         // Up to and including day 30, we will ignore day 0
-        Calendar = new ArrayList[31];
+        Calendar = new ArrayList<ArrayList<BusyDate>>();
         // initializing
         for (int i = 1; i < 31; i++) {
-            Calendar[i] = new ArrayList<BusyDate>();
+            Calendar.add(new ArrayList<BusyDate>());
         }
     }
 
@@ -115,12 +115,12 @@ public class CalendarApp implements App {
                 Meeting meeting = new Meeting(date, durationInt, contact);
 
                 // Iterate through existing entries on this date
-                Iterator<BusyDate> itr = Calendar[entryDateInt].iterator();
+                Iterator<BusyDate> itr = Calendar.get(entryDateInt).iterator();
                 int count = 0;
                 while (itr.hasNext()) {
                     // Add this entry after first date that this succeeds
                     if (itr.next().after(date)) {
-                        Calendar[entryDateInt].add(count, meeting);
+                        Calendar.get(entryDateInt).add(count, meeting);
                     }
                     count++;
                 }
@@ -142,15 +142,21 @@ public class CalendarApp implements App {
             // CALL CONSTRUCTOR HERE
             Date date = new Date(0, 0, entryDateInt, hourInt, minutesInt);
             Event event = new Event(date, durationInt, description);
-            // Iterate through existing entries on this date
-            Iterator<BusyDate> itr = Calendar[entryDateInt].iterator();
-            int count = 0;
-            while (itr.hasNext()) {
-                // Add this entry after first date that this succeeds
-                if (itr.next().after(date)) {
-                    Calendar[entryDateInt].add(count, event);
+
+            if(Calendar.get(entryDateInt).size() == 0){
+                Calendar.get(entryDateInt).add(event);
+            } 
+            else{
+                // Iterate through existing entries on this date
+                Iterator<BusyDate> itr = Calendar.get(entryDateInt).iterator();
+                int count = 0;
+                while (itr.hasNext()) {
+                    // Add this entry after first date that this succeeds
+                    if (itr.next().after(date)) {
+                        Calendar.get(entryDateInt).add(count, event);
+                    }
+                    count++;
                 }
-                count++;
             }
             System.out.println("Event added.");
         }
@@ -178,13 +184,10 @@ public class CalendarApp implements App {
         //     BusyDate current = itr.next();
         //     current.printEntry();
 
-            System.out.println("BEFORE FOR");
-            for (BusyDate entry : Calendar[dayInt]) {
-                System.out.println("INSIDE FORT LOOP");
+            for (BusyDate entry : Calendar.get(dayInt)) {
                 entry.printEntry();
             }
 
-            System.out.println("AFTER");
         }
     //}
 
