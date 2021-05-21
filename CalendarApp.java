@@ -173,16 +173,20 @@ public class CalendarApp implements App {
             return;
         }
 
-        Iterator<BusyDate> itr = Calendar[dayInt].iterator();
-        while (itr.hasNext()) {
-            BusyDate current = itr.next();
-            current.printEntry();
+        // Iterator<BusyDate> itr = Calendar[dayInt].iterator();
+        // while (itr.hasNext()) {
+        //     BusyDate current = itr.next();
+        //     current.printEntry();
 
+            System.out.println("BEFORE FOR");
             for (BusyDate entry : Calendar[dayInt]) {
+                System.out.println("INSIDE FORT LOOP");
                 entry.printEntry();
             }
+
+            System.out.println("AFTER");
         }
-    }
+    //}
 
     public void printCalendar() {
         // I will take your function of print by day and run for all days.
