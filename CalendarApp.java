@@ -11,7 +11,7 @@ public class CalendarApp implements App {
         // Up to and including day 30, we will ignore day 0
         Calendar = new ArrayList<ArrayList<BusyDate>>();
         // initializing
-        for (int i = 1; i < 31; i++) {
+        for (int i = 0; i < 31; i++) {
             Calendar.add(new ArrayList<BusyDate>());
         }
     }
@@ -116,7 +116,7 @@ public class CalendarApp implements App {
 
                 // Iterate through existing entries on this date
                 Iterator<BusyDate> itr = Calendar.get(entryDateInt).iterator();
-                int count = 0;
+                int count = 1;
                 while (itr.hasNext()) {
                     // Add this entry after first date that this succeeds
                     if (itr.next().after(date)) {
@@ -142,23 +142,39 @@ public class CalendarApp implements App {
             // CALL CONSTRUCTOR HERE
             Date date = new Date(0, 0, entryDateInt, hourInt, minutesInt);
             Event event = new Event(date, durationInt, description);
-
             if(Calendar.get(entryDateInt).size() == 0){
                 Calendar.get(entryDateInt).add(event);
+                System.out.println("Event added.");
             } 
             else{
-                // Iterate through existing entries on this date
-                Iterator<BusyDate> itr = Calendar.get(entryDateInt).iterator();
                 int count = 0;
-                while (itr.hasNext()) {
-                    // Add this entry after first date that this succeeds
-                    if (itr.next().after(date)) {
+                for(BusyDate bd: Calendar.get(entryDateInt)){
+                    if(bd.after(date)){
                         Calendar.get(entryDateInt).add(count, event);
+                        System.out.println("Event added.");
+                        return;
                     }
                     count++;
                 }
+                Calendar.get(entryDateInt).add(event);
+                System.out.println("Event added.");
             }
-            System.out.println("Event added.");
+            // if(Calendar.get(entryDateInt).size() == 0){
+            //     Calendar.get(entryDateInt).add(event);
+            // } 
+            // else{
+            //     // Iterate through existing entries on this date
+            //     Iterator<BusyDate> itr = Calendar.get(entryDateInt).iterator();
+            //     int count = 1;
+            //     while (itr.hasNext()) {
+            //         // Add this entry after first date that this succeeds
+            //         if (itr.next().after(date)) {
+            //             Calendar.get(entryDateInt).add(count, event);
+            //         }
+            //         count++;
+            //     }
+            // }
+            
         }
 
     }
