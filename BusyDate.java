@@ -1,22 +1,21 @@
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.*;
 
 public abstract class BusyDate extends Date{
-    private ArrayList<BusyDate> busyDateList;   //Take this away
+    //private ArrayList<BusyDate> busyDateList;   //Take this away
     protected Date date;
     protected int duration;
-
-    // public Date getDate(){
-    //     return date;
-    // }
 
     public int getDuration(){
         return duration;
     }
 
-    public ArrayList<BusyDate> getMeetingList(){
-        return busyDateList;
-    }
+    // public Date getDateandTime(){
+    //     return 
+    // }
+
+    // public ArrayList<BusyDate> getMeetingList(){
+    //     return busyDateList;
+    // }
 
     /* constructor
     * In: Day of month 
