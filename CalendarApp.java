@@ -9,7 +9,20 @@ public class CalendarApp implements App {
         //calendar = new BusyDate[30];
         ArrayList<BusyDate>[] cal = new ArrayList[30];  //Change to calendar
     }
-  
+    
+    public printCalendar(){
+        // I will take your function of print by day and run for all days.
+    }
+    
+    public printAllMeatingForContact(){
+
+    }
+
+    public overlapsCheck(){
+
+
+    }
+
     @Override
     public void runApp() {
         // TODO Auto-generated method stub
@@ -29,7 +42,7 @@ public class CalendarApp implements App {
     @Override
     public void printAllContents() {
         // TODO Auto-generated method stub
-        
+        this.printCalendar();
     }
 
 }
