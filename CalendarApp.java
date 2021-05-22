@@ -307,6 +307,7 @@ public class CalendarApp implements App {
                     System.out.println("Invalid input. Please try again.\n");
             }
         }
+        s.close()
     }
 
     public void printMenu() {
