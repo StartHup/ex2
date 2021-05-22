@@ -114,19 +114,27 @@ public class CalendarApp implements App {
                 Date date = new Date(0, 0, entryDateInt, hourInt, minutesInt);
                 Meeting meeting = new Meeting(date, durationInt, contact);
 
-                // Iterate through existing entries on this date
-                Iterator<BusyDate> itr = Calendar.get(entryDateInt).iterator();
-                int count = 1;
-                while (itr.hasNext()) {
-                    // Add this entry after first date that this succeeds
-                    if (itr.next().after(date)) {
-                        Calendar.get(entryDateInt).add(count, meeting);
-                    }
-                    count++;
+                // If first meeting on day - add to beginning of list
+                if (Calendar.get(entryDateInt).size() == 0) {
+                    Calendar.get(entryDateInt).add(meeting);
+                    System.out.println("Meeting added.");
                 }
-
-                // Calendar[entryDateInt].add(meeting);
-                System.out.println("Meeting added.");
+                // If not first meeting - find the proper index
+                else {
+                    int count = 0;
+                    // Iterate through list of meetings on date
+                    for (BusyDate bd : Calendar.get(entryDateInt)) {
+                        if (bd.date.after(date)) {
+                            Calendar.get(entryDateInt).add(count, meeting);
+                            System.out.println("Meeting added.");
+                            return;
+                        }
+                        count++;
+                    }
+                    // If reached end of list - add to the end
+                    Calendar.get(entryDateInt).add(count, meeting);
+                    System.out.println("Meeting added.");
+                }
             }
             // If contact doesn't exist (method throws exception)
             catch (Exception err) {
@@ -142,28 +150,29 @@ public class CalendarApp implements App {
             // CALL CONSTRUCTOR HERE
             Date date = new Date(0, 0, entryDateInt, hourInt, minutesInt);
             Event event = new Event(date, durationInt, description);
-            //If first event on day - add to beginning of list
-            if(Calendar.get(entryDateInt).size() == 0){
+
+            // If first event on day - add to beginning of list
+            if (Calendar.get(entryDateInt).size() == 0) {
                 Calendar.get(entryDateInt).add(event);
                 System.out.println("Event added.");
-            } 
-            //If not first event - find the proper index
-            else{
+            }
+            // If not first event - find the proper index
+            else {
                 int count = 0;
-                //Iterate through list of events on date
-                for(BusyDate bd: Calendar.get(entryDateInt)){
-                    if(bd.date.after(date)){
+                // Iterate through list of events on date
+                for (BusyDate bd : Calendar.get(entryDateInt)) {
+                    if (bd.date.after(date)) {
                         Calendar.get(entryDateInt).add(count, event);
                         System.out.println("Event added.");
                         return;
                     }
                     count++;
                 }
-                //If reached end of list - add to the end
+                // If reached end of list - add to the end
                 Calendar.get(entryDateInt).add(count, event);
                 System.out.println("Event added.");
             }
-            
+
         }
 
     }
@@ -184,12 +193,12 @@ public class CalendarApp implements App {
             return;
         }
 
-        //Iterate through each entry and print
+        // Iterate through each entry and print
         for (BusyDate entry : Calendar.get(dayInt)) {
             entry.printEntry();
         }
 
-        }
+    }
 
     public void printCalendar() {
         // I will take your function of print by day and run for all days.
@@ -203,9 +212,7 @@ public class CalendarApp implements App {
 
     // }
 
-    
-
-    public void userRemoveEntry(){
+    public void userRemoveEntry() {
         System.out.print("Enter day of entry to be removed: ");
         String day = s.nextLine();
         int dayInt = Integer.parseInt(day);
@@ -213,7 +220,7 @@ public class CalendarApp implements App {
         System.out.print("Enter ");
     }
 
-    public void removeEntry(int index, int day){
+    public void removeEntry(int index, int day) {
         Calendar.get(day).remove(index);
     }
 
