@@ -87,6 +87,8 @@ class PhoneBookApp implements App{
             //Check if next contact matches name
             if (itr.next().getName().equals(name)){
                 itr.remove();
+                //Call CalendarApp to remove all meetings with contact
+                ((CalendarApp)(TestMobilePhone.apps[0])).removeMeetingsByContact(name);
                 System.out.println("Successfully removed " + name);
                 return;
             }

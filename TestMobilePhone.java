@@ -6,7 +6,10 @@ class TestMobilePhone{
     static Scanner s = new Scanner(System.in);
     public static void main(String[] args){
         apps[0] = new CalendarApp();
-        apps[1] = new PhoneBookApp();
+        PhoneBookApp p = new PhoneBookApp();
+        apps[1] = p;
+
+        p.addContact(new Contact("Boaz", "0532224444"));
         apps[2] = new MessengerApp();
         MediaPlayerApp vlc = new MediaPlayerApp();
         apps[3] = vlc;

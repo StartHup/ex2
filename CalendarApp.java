@@ -193,8 +193,8 @@ public class CalendarApp implements App {
             return;
         }
 
-        //If day empty
-        if (Calendar.get(dayInt).size() == 0){
+        // If day empty
+        if (Calendar.get(dayInt).size() == 0) {
             System.out.println("No entries on this day!");
             return;
         }
@@ -219,41 +219,55 @@ public class CalendarApp implements App {
     // }
 
     public void userRemoveEntry() {
-        //Get day of entry
+        // Get day of entry
         System.out.print("Enter day of entry to be removed: ");
         String input = s.nextLine();
         int dayInt = Integer.parseInt(input);
 
-        //Get hour of entry
+        // Get hour of entry
         System.out.print("Enter hour of entry: ");
         input = s.nextLine();
         int hourInt = Integer.parseInt(input);
 
-        //Get minute of entry
+        // Get minute of entry
         System.out.print("Enter day of entry: ");
         input = s.nextLine();
         int minuteInt = Integer.parseInt(input);
 
-        //Create Date object with desired time to be removed, to use for comparison
+        // Create Date object with desired time to be removed, to use for comparison
         Date removeDate = new Date(0, 0, dayInt, hourInt, minuteInt);
 
-        //Iterate through BusyDates on requeted day to find entry
+        // Iterate through BusyDates on requeted day to find entry
         int count = 0;
-        for (BusyDate bd : Calendar.get(dayInt)){
-            //If same time - remove
-            if (bd.date.equals(removeDate)){
+        for (BusyDate bd : Calendar.get(dayInt)) {
+            // If same time - remove
+            if (bd.date.equals(removeDate)) {
                 removeEntry(dayInt, count);
                 System.out.println("Entry removed");
                 return;
             }
             count++;
         }
-        //If reached end of list - no such entry!
+        // If reached end of list - no such entry!
         System.out.println("No such entry!");
     }
 
     public void removeEntry(int day, int index) {
         Calendar.get(day).remove(index);
+    }
+
+    public void removeMeetingsByContact(String contact) {
+        for (ArrayList<BusyDate> day : Calendar) {
+            Iterator<BusyDate> itr = day.iterator();
+            while (itr.hasNext()) {
+                BusyDate bd = itr.next();
+                if (bd instanceof Meeting) {
+                    if (((Meeting) bd).contact.getName().equals(contact)) {
+                        itr.remove();
+                    }
+                }
+            }
+        }
     }
 
     @Override
