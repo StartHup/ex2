@@ -193,6 +193,12 @@ public class CalendarApp implements App {
             return;
         }
 
+        //If day empty
+        if (Calendar.get(dayInt).size() == 0){
+            System.out.println("No entries on this day!");
+            return;
+        }
+
         // Iterate through each entry and print
         for (BusyDate entry : Calendar.get(dayInt)) {
             entry.printEntry();
