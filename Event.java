@@ -16,9 +16,8 @@ public class Event extends BusyDate {
     }
 
     public void printEntry(){
-        System.out.println("Day of event: " + this.getDate() + " ");
 
-        SimpleDateFormat formattedTime = new SimpleDateFormat("'at' HH:mm");
+        SimpleDateFormat formattedTime = new SimpleDateFormat("'Day of event: 'd' at 'HH:mm");
 
         System.out.println(formattedTime.format(this.date));
 

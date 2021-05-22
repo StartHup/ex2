@@ -142,38 +142,27 @@ public class CalendarApp implements App {
             // CALL CONSTRUCTOR HERE
             Date date = new Date(0, 0, entryDateInt, hourInt, minutesInt);
             Event event = new Event(date, durationInt, description);
+            //If first event on day - add to beginning of list
             if(Calendar.get(entryDateInt).size() == 0){
                 Calendar.get(entryDateInt).add(event);
                 System.out.println("Event added.");
             } 
+            //If not first event - find the proper index
             else{
                 int count = 0;
+                //Iterate through list of events on date
                 for(BusyDate bd: Calendar.get(entryDateInt)){
-                    if(bd.after(date)){
+                    if(bd.date.after(date)){
                         Calendar.get(entryDateInt).add(count, event);
                         System.out.println("Event added.");
                         return;
                     }
                     count++;
                 }
-                Calendar.get(entryDateInt).add(event);
+                //If reached end of list - add to the end
+                Calendar.get(entryDateInt).add(count, event);
                 System.out.println("Event added.");
             }
-            // if(Calendar.get(entryDateInt).size() == 0){
-            //     Calendar.get(entryDateInt).add(event);
-            // } 
-            // else{
-            //     // Iterate through existing entries on this date
-            //     Iterator<BusyDate> itr = Calendar.get(entryDateInt).iterator();
-            //     int count = 1;
-            //     while (itr.hasNext()) {
-            //         // Add this entry after first date that this succeeds
-            //         if (itr.next().after(date)) {
-            //             Calendar.get(entryDateInt).add(count, event);
-            //         }
-            //         count++;
-            //     }
-            // }
             
         }
 
@@ -195,17 +184,12 @@ public class CalendarApp implements App {
             return;
         }
 
-        // Iterator<BusyDate> itr = Calendar[dayInt].iterator();
-        // while (itr.hasNext()) {
-        //     BusyDate current = itr.next();
-        //     current.printEntry();
-
-            for (BusyDate entry : Calendar.get(dayInt)) {
-                entry.printEntry();
-            }
+        //Iterate through each entry and print
+        for (BusyDate entry : Calendar.get(dayInt)) {
+            entry.printEntry();
+        }
 
         }
-    //}
 
     public void printCalendar() {
         // I will take your function of print by day and run for all days.
@@ -226,7 +210,7 @@ public class CalendarApp implements App {
         String day = s.nextLine();
         int dayInt = Integer.parseInt(day);
 
-        System.out.print("Enter ")
+        System.out.print("Enter ");
     }
 
     public void removeEntry(int index, int day){
