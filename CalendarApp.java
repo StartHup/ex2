@@ -213,14 +213,40 @@ public class CalendarApp implements App {
     // }
 
     public void userRemoveEntry() {
+        //Get day of entry
         System.out.print("Enter day of entry to be removed: ");
-        String day = s.nextLine();
-        int dayInt = Integer.parseInt(day);
+        String input = s.nextLine();
+        int dayInt = Integer.parseInt(input);
 
-        System.out.print("Enter ");
+        //Get hour of entry
+        System.out.print("Enter hour of entry: ");
+        input = s.nextLine();
+        int hourInt = Integer.parseInt(input);
+
+        //Get minute of entry
+        System.out.print("Enter day of entry: ");
+        input = s.nextLine();
+        int minuteInt = Integer.parseInt(input);
+
+        //Create Date object with desired time to be removed, to use for comparison
+        Date removeDate = new Date(0, 0, dayInt, hourInt, minuteInt);
+
+        //Iterate through BusyDates on requeted day to find entry
+        int count = 0;
+        for (BusyDate bd : Calendar.get(dayInt)){
+            //If same time - remove
+            if (bd.date.equals(removeDate)){
+                removeEntry(dayInt, count);
+                System.out.println("Entry removed");
+                return;
+            }
+            count++;
+        }
+        //If reached end of list - no such entry!
+        System.out.println("No such entry!");
     }
 
-    public void removeEntry(int index, int day) {
+    public void removeEntry(int day, int index) {
         Calendar.get(day).remove(index);
     }
 
@@ -241,6 +267,7 @@ public class CalendarApp implements App {
                     break;
 
                 case "2":
+                    userRemoveEntry();
                     break;
 
                 case "3":
