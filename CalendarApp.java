@@ -257,11 +257,15 @@ public class CalendarApp implements App {
     }
 
     public void removeMeetingsByContact(String contact) {
+        // Iterate through all days
         for (ArrayList<BusyDate> day : Calendar) {
+            // Iterate through all BusyDates in day
             Iterator<BusyDate> itr = day.iterator();
             while (itr.hasNext()) {
                 BusyDate bd = itr.next();
+                // Only check if entry is meeting (not event)
                 if (bd instanceof Meeting) {
+                    // If meeting with wanted contact - remove
                     if (((Meeting) bd).contact.getName().equals(contact)) {
                         itr.remove();
                     }
