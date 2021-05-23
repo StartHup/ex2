@@ -13,6 +13,9 @@ public class Event extends BusyDate {
         this.date = date;
         this.duration = duration;
         this.description = description;
+        
+        masterID++;
+        this.busyDateID = masterID;
     }
 
     public void printEntry(){
