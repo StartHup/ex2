@@ -23,10 +23,8 @@ public class CalendarApp implements App {
         String entryType = s.nextLine();
 
         // Check valid entry type
-        if (!(isStringDigits(entryType))) {
-            System.out.println("Invalid input!");
+        if (!(isStringDigits(entryType)))
             return;
-        }
 
         // Convert input to int
         int entryTypeInt = Integer.parseInt(entryType);
@@ -42,10 +40,8 @@ public class CalendarApp implements App {
         String entryDate = s.nextLine();
 
         // Check valid input
-        if (!(isStringDigits(entryDate))) {
-            System.out.println("Invalid input!");
+        if (!(isStringDigits(entryDate)))
             return;
-        }
 
         // Convert input to int
         int entryDateInt = Integer.parseInt(entryDate);
@@ -57,14 +53,12 @@ public class CalendarApp implements App {
         }
 
         // Retrieve hour of event
-        System.out.print("Enter hour of event (0-24): ");
+        System.out.print("Enter hour of event (0-23): ");
         String hour = s.nextLine();
 
         // Check valid format
-        if (!(isStringDigits(hour))) {
-            System.out.println("Invalid input!");
+        if (!(isStringDigits(hour)))
             return;
-        }
 
         int hourInt = Integer.parseInt(hour);
         if (hourInt < 0 || hourInt > 23) {
@@ -77,10 +71,8 @@ public class CalendarApp implements App {
         String minutes = s.nextLine();
 
         // Check valid format
-        if (!(isStringDigits(minutes))) {
-            System.out.println("Invalid input!");
+        if (!(isStringDigits(minutes)))
             return;
-        }
 
         int minutesInt = Integer.parseInt(minutes);
         if (minutesInt < 0 || minutesInt > 59) {
@@ -93,10 +85,8 @@ public class CalendarApp implements App {
         String duration = s.nextLine();
 
         // Check valid input
-        if (!(isStringDigits(duration))) {
-            System.out.println("Invalid input!");
+        if (!(isStringDigits(duration)))
             return;
-        }
 
         // Convert input to int
         int durationInt = Integer.parseInt(duration);
@@ -185,10 +175,8 @@ public class CalendarApp implements App {
         String day = s.nextLine();
 
         // Check valid input
-        if (!(isStringDigits(day))) {
-            System.out.println("Invalid input!");
+        if (!(isStringDigits(day)))
             return;
-        }
 
         int dayInt = Integer.parseInt(day);
         if (dayInt < 1 || dayInt > 30) {
@@ -285,16 +273,22 @@ public class CalendarApp implements App {
         // Get day of entry
         System.out.print("Enter day of entry to be removed: ");
         String input = s.nextLine();
+        if (!(isStringDigits(input)))
+            return;
         int dayInt = Integer.parseInt(input);
 
         // Get hour of entry
         System.out.print("Enter hour of entry: ");
         input = s.nextLine();
+        if (!(isStringDigits(input)))
+            return;
         int hourInt = Integer.parseInt(input);
 
         // Get minute of entry
         System.out.print("Enter day of entry: ");
         input = s.nextLine();
+        if (!(isStringDigits(input)))
+            return;
         int minuteInt = Integer.parseInt(input);
 
         // Create Date object with desired time to be removed, to use for comparison
@@ -440,6 +434,7 @@ public class CalendarApp implements App {
 
         // If NumberFormatException caught => there is a nondigit somewhere
         catch (NumberFormatException e) {
+            System.out.println("Invalid input!");
             return false;
         }
     }
