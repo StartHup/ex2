@@ -41,12 +41,12 @@ class PhoneBookApp implements App{
         }
         
         //Input new contact number
-        System.out.println("Enter phone number. Must be exactly 9 or 10 digits long: ");
+        System.out.println("Enter phone number. Must be exactly 9 or 10 digits long (and start with 0): ");
         String number = s.nextLine();
 
         //Check number validity
         if (!(isStringDigits(number))){
-            System.out.println("Only digits allowed in phone number!");
+            System.out.println("Number must be only digits and start with 0!");
             return;
         }
         if (!(isStringProperLength(number, 9, 10))){
@@ -88,11 +88,15 @@ class PhoneBookApp implements App{
             Contact contact = itr.next();
             if (contact.getName().equals(name)){
               
+                //Call MessengerApp to remove all messages with contact
+                ((MessengerApp)(TestMobilePhone.apps[2])).removeContact(contact.getName());
+              
                 //Call CalendarApp to remove all meetings with contact
                 ((CalendarApp)(TestMobilePhone.apps[0])).removeMeetingsByContact(name);  
-              
+                
+                //Delete actual contact from phonebook
                 itr.remove();
-
+              
                 System.out.println("Successfully removed " + name);
                 return;
             }
