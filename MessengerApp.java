@@ -69,10 +69,7 @@ class MessengerApp implements App{
         Contact recipient;
         try{
             recipient = ((PhoneBookApp)(TestMobilePhone.apps[1])).getContactByName(name);
-            if(chains.containsKey(recipient)){
-                System.out.println(chains.get(recipient).toString());
-            } 
-            else{
+            if(!(chains.containsKey(recipient))){
                 System.out.println("No messages with " + name);
                 this.romoveContact(recipient);
             }
