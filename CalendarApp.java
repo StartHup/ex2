@@ -1,3 +1,4 @@
+import java.time.Duration;
 import java.util.*;
 
 public class CalendarApp implements App {
@@ -209,16 +210,76 @@ public class CalendarApp implements App {
     }
 
     public void printCalendar() {
-        // I will take your function of print by day and run for all days.
-    }
+        int numOfEmptyDays = 0;
+        for (int i = 1; i < 31; i++) {
+                // If day empty
+                if (Calendar.get(i).size() == 0) {
+                    numOfEmptyDays++;
+                } 
+                for (BusyDate entry : Calendar.get(i)) {
+                    entry.printEntry();
+                } 
+            if (numOfEmptyDays == 30){
+                System.out.println("Calendar empty!");
+            }
+        }
+    } 
 
-    // public printAllMeetingsForContact(){
+     public void printAllMeetingsForContact(){
+        System.out.print("Enter name of contact for meeting: ");
+        String con = s.nextLine();
+        int meetingExist = 0;
+        // check that contact exists
+        try {
+            Contact contact = ((PhoneBookApp) (TestMobilePhone.apps[1])).getContactByName(con);
+            for (ArrayList<BusyDate> day : Calendar) {
+                // Iterate through all BusyDates in day
+                Iterator<BusyDate> itr = day.iterator();
+                while (itr.hasNext()) {
+                    BusyDate bd = itr.next();
+                    // Only check if entry is meeting (not event)
+                    if (bd instanceof Meeting) {
+                        // If meeting with wanted contact - remove
+                        if (((Meeting) bd).contact.getName().equals(con)) {
+                            bd.printEntry();
+                            meetingExist++;
+                        }
+                    }
+                }
+            }
+            if( meetingExist == 0)
+            System.out.println("Meeting with that contact doesn't exist");  
+        }   
+        // If contact doesn't exist (method throws exception)
+        catch (Exception err) {
+            System.out.println("Contact does not exist!");
+            return;
+        }
+ }
+     
 
-    // }
-
-    // public overlapsCheck(){
-
-    // }
+     public void overlapsCheck(){
+        int minute, hours = 0;
+        for(int i = 1; i<31; i++){
+            for(int k = 0; k<Calendar.get(i).size();k++){
+                BusyDate bd = Calendar.get(i).get(k);
+                for (int j = k+1;  j<Calendar.get(i).size();j++){
+                    BusyDate bdnext = Calendar.get(i).get(j);
+                    minute = bd.getDuration();
+                    int x = bd.date.getMinutes() + minute;
+                    if(x >= 60){
+                       hours ++;
+                       x = bd.date.getMinutes() + minute - 60;
+                   }
+                   Date newdate = new Date(0, 0, i , bd.date.getHours() + hours, x);
+                   if(newdate.after(bdnext.date)){
+                    System.out.println("Conflict removed");
+                    removeByEntry(bdnext.busyDateID);
+                    }
+                }
+            }
+        }     
+}
 
     public void userRemoveEntry() {
         // Get day of entry
@@ -275,6 +336,19 @@ public class CalendarApp implements App {
             }
         }
     }
+    public void removeByEntry(int id){
+        for(int i = 1; i<31; i++){
+                if (Calendar.get(i).size()!=0){
+                    for(int k = 0; k<Calendar.get(i).size();k++){
+                    int currentId = Calendar.get(i).get(k).busyDateID;
+                    if (currentId == id){
+                        Calendar.get(i).remove(k);
+                        return;
+                    }
+                }    
+            }
+        }
+    }
 
     @Override
     public void runApp() {
@@ -298,6 +372,18 @@ public class CalendarApp implements App {
 
                 case "3":
                     printEntriesByDay();
+                    break;
+
+                case "4":
+                    printAllMeetingsForContact();
+                    break;
+
+                case "5":
+                    overlapsCheck();
+                    break;
+
+                case "6":
+                    printAllContents();
                     break;
 
                 case "7":
@@ -342,7 +428,7 @@ public class CalendarApp implements App {
     @Override
     public void printAllContents() {
         // TODO Auto-generated method stub
-        // this.printCalendar();
+         this.printCalendar();
     }
 
     public boolean isStringDigits(String string) {
