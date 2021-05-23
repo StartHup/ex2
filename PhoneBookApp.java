@@ -85,7 +85,8 @@ class PhoneBookApp implements App{
         Iterator<Contact> itr = phoneBook.iterator();
         while (itr.hasNext()){
             //Check if next contact matches name
-            if (itr.next().getName().equals(name)){
+            Contact contact = itr.next();
+            if (contact.getName().equals(name)){
                 itr.remove();
                 //Call CalendarApp to remove all meetings with contact
                 ((CalendarApp)(TestMobilePhone.apps[0])).removeMeetingsByContact(name);
