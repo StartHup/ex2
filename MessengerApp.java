@@ -21,7 +21,7 @@ class MessengerApp implements App{
             else{
                 chains.put(recipient, new MessegaChain(recipient, content));
             }
-            System.out.println("Message send successfuly");
+            System.out.println("Message sent successfuly");
         } catch(Exception ex){
             System.out.println(name + " is not a contact");
         }
@@ -37,7 +37,7 @@ class MessengerApp implements App{
             if(chains.containsKey(recipient)){
                 chains.get(recipient).eraseChain();
             }
-            System.out.println("No more messages with " + name);
+            System.out.println("Deleted messages with " + name);
         } catch(Exception ex){
             System.out.println(name + " is not a contact");
         }
