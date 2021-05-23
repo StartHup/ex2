@@ -256,24 +256,6 @@ public class CalendarApp implements App {
 
      public void overlapsCheck(){
         int minute, hours = 0;
-       /* for (int i = 1; i < 31; i++){ 
-            for(Iterator<BusyDate> k = Calendar.get(i).iterator();k.hasNext();){
-                BusyDate bdnext = k.next();
-                for(Iterator<BusyDate> j = bdnext.next(); j.hasNext();){
-                    BusyDate bd = j.next();
-                    minute = bd.getDuration();
-                    int x = bd.date.getMinutes() + minute;
-                    if(x > 60){
-                       hours ++;
-                       x = bd.date.getMinutes() + minute - 60;
-                   }
-                   Date newdate = new Date(0, 0, i , bd.date.getHours() + hours, x);
-                   //if(newdate.after(bdnext.date)){
-                    System.out.println(newdate);
-                    System.out.println(bdnext.date);
-                }
-            }
-        }*/
         for(int i = 1; i<31; i++){
             for(int k = 0; k<Calendar.get(i).size();k++){
                 BusyDate bd = Calendar.get(i).get(k);
@@ -287,37 +269,12 @@ public class CalendarApp implements App {
                    }
                    Date newdate = new Date(0, 0, i , bd.date.getHours() + hours, x);
                    if(newdate.after(bdnext.date)){
+                    System.out.println("Conflict removed");
                     removeByEntry(bdnext.busyDateID);
                     }
                 }
             }
-        }
-       
-        /*for (ArrayList<BusyDate> day : Calendar) {
-            // Iterate through all BusyDates in day
-            Iterator<BusyDate> itr = day.iterator();
-            
-            BusyDate bdnext ;
-            while (itr.hasNext()) {
-                BusyDate bd = itr.next();
-                BusyDate bdnextBusyDate = bd.next();
-                minute = bd.getDuration();
-                //transforn into hours
-                if(bd.date.getMinutes() + minute>60){
-                    hours ++;
-
-                }
-                Date newdate = new Date(0, 0, i , bd.date.getHours() + hours, bd.date.getMinutes() + minute);
-                if (bd instanceof Meeting) {
-                    // If meeting with wanted contact - remove
-                    if (((Meeting) bd).contact.getName().equals(contact)) {
-                        
-                    };
-                bdnext = itr.next();
-                }
-            }
-        }
-    */
+        }     
 }
 
     public void userRemoveEntry() {
