@@ -9,7 +9,7 @@ public class MediaPlayerApp implements App{
     //Constructor
     public MediaPlayerApp() {
         mediaList = new ArrayList<Media>();
-    } 
+    }
     
     public void addNewMediaFile(Media mediaFile){
         if (mediaFile != null){
