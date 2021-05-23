@@ -64,6 +64,24 @@ class MessengerApp implements App{
             chains.remove(c);
         }
     }
+
+    public void removeContact(String name){
+        Contact recipient;
+        try{
+            recipient = ((PhoneBookApp)(TestMobilePhone.apps[1])).getContactByName(name);
+            if(chains.containsKey(recipient)){
+                System.out.println(chains.get(recipient).toString());
+            } 
+            else{
+                System.out.println("No messages with " + name);
+                this.romoveContact(recipient);
+            }
+        } 
+        catch(Exception ex){
+            System.out.println(name + " is not a contact");
+        }
+        
+    }
     public void searchForPhrase(){
         System.out.println("What phrase should we find?");
         String text = s.next();
