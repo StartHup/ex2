@@ -8,12 +8,12 @@ class MessengerApp implements App{
 
     public void addMessage(){
         System.out.println("To who would you like to write?");
-        String name = s.next();
+        String name = s.nextLine();
         Contact recipient;
         try{
             recipient = ((PhoneBookApp)(TestMobilePhone.apps[1])).getContactByName(name);
             System.out.println("What would you like to send to " + name + "?");
-            String content = s.next();
+            String content = s.nextLine();
             //check if we've sent a message:
             if(chains.containsKey(recipient)){
                 chains.get(recipient).addMessage(content);
@@ -21,7 +21,7 @@ class MessengerApp implements App{
             else{
                 chains.put(recipient, new MessegaChain(recipient, content));
             }
-            System.out.println("Message send successfuly");
+            System.out.println("Message sent successfuly");
         } catch(Exception ex){
             System.out.println(name + " is not a contact");
         }
@@ -30,14 +30,14 @@ class MessengerApp implements App{
 
     public void deleteConversation() {
         System.out.println("Who would you like to erase?");
-        String name = s.next();
+        String name = s.nextLine();
         Contact recipient;
         try{
             recipient = ((PhoneBookApp)(TestMobilePhone.apps[1])).getContactByName(name);
             if(chains.containsKey(recipient)){
                 chains.get(recipient).eraseChain();
             }
-            System.out.println("No more messages with " + name);
+            System.out.println("Deleted messages with " + name);
         } catch(Exception ex){
             System.out.println(name + " is not a contact");
         }
@@ -45,7 +45,7 @@ class MessengerApp implements App{
 
     public void printConversation(){
         System.out.println("Who's messages would you like to view?");
-        String name = s.next();
+        String name = s.nextLine();
         Contact recipient;
         try{
             recipient = ((PhoneBookApp)(TestMobilePhone.apps[1])).getContactByName(name);
@@ -69,11 +69,10 @@ class MessengerApp implements App{
         Contact recipient;
         try{
             recipient = ((PhoneBookApp)(TestMobilePhone.apps[1])).getContactByName(name);
-            if(chains.containsKey(recipient)){
-                System.out.println(chains.get(recipient).toString());
-            } 
-            else{
+            if(!(chains.containsKey(recipient))){
                 System.out.println("No messages with " + name);
+            }
+            else{
                 this.romoveContact(recipient);
             }
         } 
@@ -84,7 +83,7 @@ class MessengerApp implements App{
     }
     public void searchForPhrase(){
         System.out.println("What phrase should we find?");
-        String text = s.next();
+        String text = s.nextLine();
         boolean found = false;
         for(Contact contact: chains.keySet()){
             if(chains.get(contact).doesStringExist(text)){
@@ -131,7 +130,7 @@ class MessengerApp implements App{
             printMenu();
             
             System.out.println("Enter a number to make a selection: ");
-            input = s.next();
+            input = s.nextLine();
             
             switch (input){
                 case "1":

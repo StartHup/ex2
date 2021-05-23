@@ -2,7 +2,6 @@ import java.util.*;
 
 class TestMobilePhone{
 
-    public static App[] apps = new App[4];
     static Scanner s = new Scanner(System.in);
     //all apps can see all apps
     public static App[] apps = new App[4];
@@ -14,7 +13,7 @@ class TestMobilePhone{
         apps[3] = new MediaPlayerApp();      
 
         System.out.println("To choose app enter 1. To print all contents enter 2. To exit enter 3");
-        String choice = s.next();
+        String choice = s.nextLine();
         while (!choice.equals("3")){
             switch (choice){
                 case "1":
@@ -30,16 +29,17 @@ class TestMobilePhone{
                     System.out.println("Bad input!");    
             }
             System.out.println("To choose app enter 1. To print all contents enter 2. To exit enter 3");
-            choice = s.next();
+            choice = s.nextLine();
         }
     }
     public static void app(App[] apps){
         for(int i=0; i<apps.length; i++){
             System.out.println("For " + apps[i].getAppName() + " enter " + i + ".");
         }
-        int choice = s.nextInt();
-        if (choice >=0 && choice < apps.length){
-            apps[choice].runApp();
+        String choice = s.nextLine();
+        int choiceInt = Integer.parseInt(choice);
+        if (choiceInt >=0 && choiceInt < apps.length){
+            apps[choiceInt].runApp();
         }else{
             System.out.println("Bad input");
         }
