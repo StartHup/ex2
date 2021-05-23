@@ -1,24 +1,17 @@
 import java.util.*;
+
 class TestMobilePhone{
+
+    public static App[] apps = new App[4];
     static Scanner s = new Scanner(System.in);
     //all apps can see all apps
     public static App[] apps = new App[4];
     public static void main(String[] args){
-        
-        MessengerApp whatsapp = new MessengerApp(); 
+
         apps[0] = new CalendarApp();
         apps[1] = new PhoneBookApp();
-        apps[2] = whatsapp;
-        MediaPlayerApp vlc = new MediaPlayerApp();
-
-        apps[3] = vlc;
-        vlc.addNewMediaFile(new VideoFile("video 1",1000000));
-        vlc.addNewMediaFile(new AudioFile("song 1", 17));
-
-        PhoneBookApp pb = (PhoneBookApp)(apps[1]);
-        pb.addContact(new Contact("Shira", "123123"));
-        pb.addContact(new Contact("J", "12313"));
-        
+        apps[2] = new MessengerApp();
+        apps[3] = new MediaPlayerApp();      
 
         System.out.println("To choose app enter 1. To print all contents enter 2. To exit enter 3");
         String choice = s.next();

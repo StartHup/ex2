@@ -87,8 +87,16 @@ class PhoneBookApp implements App{
             //Check if next contact matches name
             Contact contact = itr.next();
             if (contact.getName().equals(name)){
+              
+                //Call MessengerApp to remove all messages with contact
                 ((MessengerApp)(TestMobilePhone.apps[2])).removeContact(contact.getName());
+              
+                //Call CalendarApp to remove all meetings with contact
+                ((CalendarApp)(TestMobilePhone.apps[0])).removeMeetingsByContact(name);  
+                
+                //Delete actual contact from phonebook
                 itr.remove();
+              
                 System.out.println("Successfully removed " + name);
                 return;
             }
@@ -252,6 +260,15 @@ class PhoneBookApp implements App{
 
     public boolean isListEmpty(){
         return phoneBook.size() == 0;
+    }
+
+    public Contact getContactByName(String name) throws Exception{
+        for (Contact contact : phoneBook){
+            if(contact.getName().equals(name)){
+                return contact;
+            }
+        }
+        throw new Exception("Not found");
     }
 
 
