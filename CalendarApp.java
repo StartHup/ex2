@@ -86,7 +86,7 @@ public class CalendarApp implements App {
         }
 
         // Retrieve duration of event
-        System.out.print("Enter the duration of entry (in minutes): ");
+        System.out.print("Enter the duration of entry (1-60 minutes): ");
         String duration = s.nextLine();
 
         // Check valid input
@@ -99,7 +99,7 @@ public class CalendarApp implements App {
         int durationInt = Integer.parseInt(duration);
 
         // Check valid duration
-        if (durationInt < 1) {
+        if (durationInt < 1 || durationInt > 60) {
             System.out.println("Invalid input!");
             return;
         }
