@@ -68,6 +68,7 @@ public class CalendarApp implements App {
         int hourInt = Integer.parseInt(hour);
         if (hourInt < 0 || hourInt > 23) {
             System.out.println("Invalid input!");
+            return;
         }
 
         // Retrieve minutes of event
@@ -83,6 +84,7 @@ public class CalendarApp implements App {
         int minutesInt = Integer.parseInt(minutes);
         if (minutesInt < 0 || minutesInt > 59) {
             System.out.println("Invalid input!");
+            return;
         }
 
         // Retrieve duration of event
