@@ -228,6 +228,7 @@ public class CalendarApp implements App {
      public void printAllMeetingsForContact(){
         System.out.print("Enter name of contact for meeting: ");
         String con = s.nextLine();
+        int meetingExist = 0;
         // check that contact exists
         try {
             Contact contact = ((PhoneBookApp) (TestMobilePhone.apps[1])).getContactByName(con);
@@ -241,10 +242,13 @@ public class CalendarApp implements App {
                         // If meeting with wanted contact - remove
                         if (((Meeting) bd).contact.getName().equals(con)) {
                             bd.printEntry();
+                            meetingExist++;
                         }
                     }
                 }
             }
+            if( meetingExist == 0)
+            System.out.println("Meeting with that contact doesn't exist");  
         }   
         // If contact doesn't exist (method throws exception)
         catch (Exception err) {
