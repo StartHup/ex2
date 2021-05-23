@@ -13,6 +13,9 @@ public class Meeting extends BusyDate {
         this.date = date;
         this.duration = duration;
         this.contact = contact;
+                
+        masterID++;
+        this.busyDateID = masterID;
     }
 
     public void printEntry(){
