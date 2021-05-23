@@ -7,7 +7,7 @@ public abstract class BusyDate extends Date {
 
     // To track which event/meeting is which we have a static id for all BusyDate
     // objects
-    static protected int masterID;
+    static protected int masterID = 0;
     // Each object will also save its own id
     protected int busyDateID;
 
