@@ -339,6 +339,7 @@ class PhoneBookApp implements App{
             System.out.println("Enter a number to make a selection: ");
             input = s.nextLine();
             
+            
             switch (input){
                 case "1":
                     this.addContact();

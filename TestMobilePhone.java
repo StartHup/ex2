@@ -36,9 +36,10 @@ class TestMobilePhone{
         for(int i=0; i<apps.length; i++){
             System.out.println("For " + apps[i].getAppName() + " enter " + i + ".");
         }
-        int choice = s.nextInt();
-        if (choice >=0 && choice < apps.length){
-            apps[choice].runApp();
+        String choice = s.nextLine();
+        int choiceInt = Integer.parseInt(choice);
+        if (choiceInt >=0 && choiceInt < apps.length){
+            apps[choiceInt].runApp();
         }else{
             System.out.println("Bad input");
         }

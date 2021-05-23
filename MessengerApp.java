@@ -8,12 +8,12 @@ class MessengerApp implements App{
 
     public void addMessage(){
         System.out.println("To who would you like to write?");
-        String name = s.next();
+        String name = s.nextLine();
         Contact recipient;
         try{
             recipient = ((PhoneBookApp)(TestMobilePhone.apps[1])).getContactByName(name);
             System.out.println("What would you like to send to " + name + "?");
-            String content = s.next();
+            String content = s.nextLine();
             //check if we've sent a message:
             if(chains.containsKey(recipient)){
                 chains.get(recipient).addMessage(content);
@@ -30,7 +30,7 @@ class MessengerApp implements App{
 
     public void deleteConversation() {
         System.out.println("Who would you like to erase?");
-        String name = s.next();
+        String name = s.nextLine();
         Contact recipient;
         try{
             recipient = ((PhoneBookApp)(TestMobilePhone.apps[1])).getContactByName(name);
@@ -45,7 +45,7 @@ class MessengerApp implements App{
 
     public void printConversation(){
         System.out.println("Who's messages would you like to view?");
-        String name = s.next();
+        String name = s.nextLine();
         Contact recipient;
         try{
             recipient = ((PhoneBookApp)(TestMobilePhone.apps[1])).getContactByName(name);
@@ -84,7 +84,7 @@ class MessengerApp implements App{
     }
     public void searchForPhrase(){
         System.out.println("What phrase should we find?");
-        String text = s.next();
+        String text = s.nextLine();
         boolean found = false;
         for(Contact contact: chains.keySet()){
             if(chains.get(contact).doesStringExist(text)){
@@ -131,7 +131,7 @@ class MessengerApp implements App{
             printMenu();
             
             System.out.println("Enter a number to make a selection: ");
-            input = s.next();
+            input = s.nextLine();
             
             switch (input){
                 case "1":
