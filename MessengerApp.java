@@ -1,15 +1,18 @@
 import java.util.*;
 class MessengerApp implements App{
+    //Map from contact to their chain of messages
     private HashMap<Contact, MessegaChain> chains;
     static Scanner s = new Scanner(System.in);
+    //Ctor
     public MessengerApp(){
         chains = new HashMap<Contact, MessegaChain>();
     }
-
+    //Send a message
     public void addMessage(){
         System.out.println("To who would you like to write?");
         String name = s.nextLine();
         Contact recipient;
+        //Try to find this contact in phone book app
         try{
             recipient = ((PhoneBookApp)(TestMobilePhone.apps[1])).getContactByName(name);
             System.out.println("What would you like to send to " + name + "?");
@@ -27,7 +30,7 @@ class MessengerApp implements App{
         }
 
     }
-
+    //Deletes conversation with contact
     public void deleteConversation() {
         System.out.println("Who would you like to erase?");
         String name = s.nextLine();
@@ -42,7 +45,7 @@ class MessengerApp implements App{
             System.out.println(name + " is not a contact");
         }
     }
-
+    //Display all conversations with certain contact
     public void printConversation(){
         System.out.println("Who's messages would you like to view?");
         String name = s.nextLine();
@@ -58,13 +61,13 @@ class MessengerApp implements App{
             System.out.println(name + " is not a contact");
         }
     }
-
+    //This function removes a contact, and gets the contact's reference as variable
     public void romoveContact(Contact c){
         if(chains.containsKey(c)){
             chains.remove(c);
         }
     }
-
+    // Remove function when it gets the contact's name
     public void removeContact(String name){
         Contact recipient;
         try{
@@ -81,6 +84,8 @@ class MessengerApp implements App{
         }
         
     }
+
+    //Search in all chains for a certain phrase
     public void searchForPhrase(){
         System.out.println("What phrase should we find?");
         String text = s.nextLine();
